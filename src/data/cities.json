@@ -1,0 +1,726 @@
+{
+  "cities": [
+    {
+      "id": "dallas",
+      "name": "Dallas / Arlington",
+      "stadium": "AT&T Stadium",
+      "frictionIndex": 8.7,
+      "primaryFriction": "Stadium access",
+      "distanceMiles": 20,
+      "infographicCaption": "20 miles / no simple rail assumption",
+      "downtownCode": "DTX",
+      "stadiumCode": "ATT",
+      "advisory": "Do not choose downtown lodging without a confirmed matchday transfer.",
+      "stadiumReality": "AT&T Stadium is in Arlington, not downtown Dallas. Travelers staying in Dallas should confirm matchday transport before leaving their hotel.",
+      "heatRisk": "high",
+      "heatCopy": "June and July temperatures in Dallas regularly exceed 35–38°C. Plan hydration, sunscreen, shaded waiting time, and post-match exit delays.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-12", "2026-06-18", "2026-06-22"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday. This is the most predictable option.",
+          "action": "Check official host city site for shuttle booking."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge pricing can be significant. Pickup zones may be far from exits. Expect 60–90+ min waits.",
+          "action": "Have a backup plan. Do not rely on rideshare as your only option."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Parking must be pre-booked. Road closures and post-match traffic can extend exit times significantly.",
+          "action": "Pre-book parking only. No walk-up parking assumption."
+        },
+        {
+          "mode": "Public transit",
+          "frictionLevel": "high",
+          "warning": "No direct rail connection between downtown Dallas and AT&T Stadium.",
+          "action": "Do not assume rail will solve matchday movement."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Dallas",
+          "pros": "Best restaurant and nightlife access, easy airport connection",
+          "risks": "No rail to stadium, rideshare surge likely, 20-mile transfer each way",
+          "action": "Confirm shuttle or transfer before booking downtown hotel."
+        },
+        {
+          "zone": "Arlington / near stadium",
+          "pros": "Minimal matchday transfer friction",
+          "risks": "Limited dining and city experience outside matchdays",
+          "action": "Good option if stadium access is your priority."
+        },
+        {
+          "zone": "DFW Airport area",
+          "pros": "Easy arrival and departure logistics",
+          "risks": "Far from both downtown and stadium, requires two transfers",
+          "action": "Only if flight timing makes it necessary."
+        },
+        {
+          "zone": "Fort Worth",
+          "pros": "Walkable city feel, good dining",
+          "risks": "Adds complexity to stadium transfer on matchday",
+          "action": "Plan transfer carefully. Not walking distance to stadium."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "boston",
+      "name": "Boston / Foxborough",
+      "stadium": "Gillette Stadium",
+      "frictionIndex": 8.3,
+      "primaryFriction": "Suburban venue",
+      "distanceMiles": 30,
+      "infographicCaption": "'Boston' stadium is outside Boston",
+      "downtownCode": "BOS",
+      "stadiumCode": "GIL",
+      "advisory": "Treat this as a regional trip, not a simple Boston city match.",
+      "stadiumReality": "Gillette Stadium is in Foxborough, approximately 30 miles south of Boston. It is a suburban venue requiring regional transport planning.",
+      "heatRisk": "low",
+      "heatCopy": "Boston summer temperatures are generally mild. Heat is a lower risk here than other host cities.",
+      "transitType": "rail-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-25"],
+      "transportOptions": [
+        {
+          "mode": "Commuter rail (MBTA)",
+          "frictionLevel": "medium",
+          "warning": "Special matchday service will run but capacity is limited. Book early.",
+          "action": "Check MBTA matchday schedule. This is the recommended option."
+        },
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking and pickup location before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Parking is limited and must be pre-booked. Post-match exit is slow.",
+          "action": "Pre-book only. Expect significant post-match delays."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Boston",
+          "pros": "Best city experience, walkable, good dining",
+          "risks": "Requires commuter rail or shuttle to stadium, 30 miles away",
+          "action": "Confirm MBTA matchday service before booking."
+        },
+        {
+          "zone": "Foxborough / near stadium",
+          "pros": "Minimal matchday transfer friction",
+          "risks": "Very limited hotel options, book early",
+          "action": "Book immediately if this is your preference. Limited supply."
+        },
+        {
+          "zone": "Providence, RI",
+          "pros": "Good Amtrak connection to Boston",
+          "risks": "Adds transfer complexity on matchday",
+          "action": "Only if Boston hotels are fully booked."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "miami",
+      "name": "Miami",
+      "stadium": "Hard Rock Stadium",
+      "frictionIndex": 8.1,
+      "primaryFriction": "Heat + transfer timing",
+      "distanceMiles": 12,
+      "infographicCaption": "Visitor zones are not stadium-adjacent",
+      "downtownCode": "MIA",
+      "stadiumCode": "HRS",
+      "advisory": "Build your plan around heat, traffic, and the post-match exit.",
+      "stadiumReality": "Hard Rock Stadium is in Miami Gardens, not Miami Beach or downtown Miami. Visitors staying in popular tourist zones face a transfer.",
+      "heatRisk": "high",
+      "heatCopy": "Miami in June and July combines heat with high humidity. Heat index can exceed 40°C. Plan accordingly for queues, outdoor waits, and post-match exits.",
+      "transitType": "rideshare-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-14", "2026-06-21", "2026-06-26"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge pricing likely. Heat makes outdoor waiting uncomfortable.",
+          "action": "Plan a shaded waiting area. Have a backup option."
+        },
+        {
+          "mode": "Metrorail",
+          "frictionLevel": "high",
+          "warning": "Metrorail does not directly serve Hard Rock Stadium.",
+          "action": "Do not assume Metrorail solves matchday movement."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Post-match traffic on major routes is significant.",
+          "action": "Pre-book parking. Expect long post-match exit."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Miami Beach",
+          "pros": "Best tourist experience, beach access",
+          "risks": "Furthest from stadium, bridge traffic adds time",
+          "action": "Plan transfer carefully. Not a quick matchday hop."
+        },
+        {
+          "zone": "Downtown Miami / Brickell",
+          "pros": "Good city access, Metromover",
+          "risks": "Still requires transfer to stadium",
+          "action": "Confirm shuttle or rideshare plan before matchday."
+        },
+        {
+          "zone": "Miami Gardens / near stadium",
+          "pros": "Minimal matchday transfer",
+          "risks": "Limited tourist amenities",
+          "action": "Good option if matchday logistics are your priority."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "nyc",
+      "name": "New York / New Jersey",
+      "stadium": "MetLife Stadium",
+      "frictionIndex": 7.8,
+      "primaryFriction": "Cross-region movement",
+      "distanceMiles": 8,
+      "infographicCaption": "NYC core to New Jersey stadium",
+      "downtownCode": "NYC",
+      "stadiumCode": "MET",
+      "advisory": "Plan the stadium transfer as a regional movement, not a quick city hop.",
+      "stadiumReality": "MetLife Stadium is in East Rutherford, New Jersey. Travelers staying in Manhattan cross a state line to reach the venue.",
+      "heatRisk": "medium",
+      "heatCopy": "New York in June and July can be hot and humid. Heat is a moderate factor, particularly for post-match outdoor waits.",
+      "transitType": "rail-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-15", "2026-06-22", "2026-07-04"],
+      "transportOptions": [
+        {
+          "mode": "NJ Transit train",
+          "frictionLevel": "medium",
+          "warning": "Special matchday service will run. Expect very high volume.",
+          "action": "Check NJ Transit matchday schedule. Arrive at Penn Station early."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Cross-state rideshare adds cost. Post-match surge likely.",
+          "action": "NJ Transit is the recommended option over rideshare."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Driving into the NYC area on matchday is not recommended.",
+          "action": "Use rail. Do not drive unless staying in New Jersey."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Midtown Manhattan",
+          "pros": "Best NYC experience, central location",
+          "risks": "NJ Transit transfer required, Penn Station crowds",
+          "action": "Use NJ Transit. Allow extra time for Penn Station on matchday."
+        },
+        {
+          "zone": "East Rutherford / NJ near stadium",
+          "pros": "Minimal matchday friction",
+          "risks": "Limited NYC experience",
+          "action": "Good option if you prioritize matchday logistics."
+        },
+        {
+          "zone": "Newark, NJ",
+          "pros": "Good transit options, airport access",
+          "risks": "Less tourist infrastructure than Manhattan",
+          "action": "NJ Transit connects to stadium. Reasonable option."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "kansascity",
+      "name": "Kansas City",
+      "stadium": "Arrowhead Stadium",
+      "frictionIndex": 8.0,
+      "primaryFriction": "Limited transit assumptions",
+      "distanceMiles": 9,
+      "infographicCaption": "Shuttle planning likely required",
+      "downtownCode": "MKC",
+      "stadiumCode": "ARW",
+      "advisory": "Do not assume standard city transit will solve matchday movement.",
+      "stadiumReality": "Arrowhead Stadium is southeast of downtown Kansas City. The city has limited public transit infrastructure and matchday movement is largely shuttle or car dependent.",
+      "heatRisk": "high",
+      "heatCopy": "Kansas City in June and July averages 30–33°C. Heat is a moderate-to-high factor for outdoor queues.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-16", "2026-06-23", "2026-06-28"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "This is the primary recommended option. Confirm before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Driving + pre-booked parking",
+          "frictionLevel": "medium",
+          "warning": "Parking available but must be pre-booked.",
+          "action": "Pre-book parking. Plan post-match traffic delays."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge likely. Limited pickup infrastructure near stadium.",
+          "action": "Have a backup plan. Do not rely solely on rideshare."
+        },
+        {
+          "mode": "City bus / public transit",
+          "frictionLevel": "high",
+          "warning": "Kansas City public transit does not reliably serve the stadium on matchday.",
+          "action": "Do not assume city bus will solve matchday movement."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Kansas City",
+          "pros": "Best dining and entertainment access",
+          "risks": "Shuttle or car required to stadium",
+          "action": "Confirm shuttle plan before booking downtown."
+        },
+        {
+          "zone": "Near stadium / south KC",
+          "pros": "Minimal matchday transfer",
+          "risks": "Limited amenities outside matchdays",
+          "action": "Good if matchday logistics are priority."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "atlanta",
+      "name": "Atlanta",
+      "stadium": "Mercedes-Benz Stadium",
+      "frictionIndex": 7.3,
+      "primaryFriction": "MARTA crowd management",
+      "distanceMiles": 1,
+      "infographicCaption": "Stadium is downtown — MARTA crowds are the friction",
+      "downtownCode": "ATL",
+      "stadiumCode": "MBS",
+      "advisory": "MARTA connects downtown to the stadium but post-match crush requires planning.",
+      "stadiumReality": "Mercedes-Benz Stadium is in downtown Atlanta, adjacent to the MARTA rail network. This is one of the better-connected venues but post-match MARTA crush is the primary friction.",
+      "heatRisk": "high",
+      "heatCopy": "Atlanta in June and July averages 30–32°C with high humidity. Plan accordingly for outdoor queues.",
+      "transitType": "rail-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-15", "2026-06-20", "2026-06-27"],
+      "transportOptions": [
+        {
+          "mode": "MARTA rail",
+          "frictionLevel": "medium",
+          "warning": "MARTA is the recommended option but post-match crush is significant.",
+          "action": "Use MARTA. Plan to wait 20–30 min post-match before boarding."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge pricing. Pickup zones congested.",
+          "action": "MARTA is better. Use rideshare only if staying far from rail."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "I-285 and downtown Atlanta roads are heavily congested post-match.",
+          "action": "Avoid driving. Use MARTA."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Atlanta / Midtown",
+          "pros": "Walking distance or one MARTA stop to stadium",
+          "risks": "Post-match crowds in hotel areas",
+          "action": "Best option for matchday logistics."
+        },
+        {
+          "zone": "Buckhead",
+          "pros": "Good dining and hotel options",
+          "risks": "MARTA transfer required, 20 min ride",
+          "action": "Reasonable option. Use MARTA."
+        },
+        {
+          "zone": "Airport area",
+          "pros": "Good flight connections",
+          "risks": "MARTA ride to stadium is long",
+          "action": "Only if arrival or departure timing requires it."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "houston",
+      "name": "Houston",
+      "stadium": "NRG Stadium",
+      "frictionIndex": 8.0,
+      "primaryFriction": "Heat + car dependency",
+      "distanceMiles": 7,
+      "infographicCaption": "Car-dependent city, heat compound risk",
+      "downtownCode": "HOU",
+      "stadiumCode": "NRG",
+      "advisory": "Houston is a car-dependent city. Plan every transfer explicitly.",
+      "stadiumReality": "NRG Stadium is south of downtown Houston. The city is heavily car-dependent and public transit options to the stadium are limited.",
+      "heatRisk": "high",
+      "heatCopy": "Houston in June and July averages 34–36°C with very high humidity. This is among the highest heat risk venues. Plan accordingly.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-11", "2026-06-17", "2026-06-24"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Primary recommended option for non-drivers.",
+          "action": "Confirm shuttle booking before matchday."
+        },
+        {
+          "mode": "Driving + pre-booked parking",
+          "frictionLevel": "medium",
+          "warning": "Pre-booked parking available near NRG.",
+          "action": "Pre-book parking. Plan post-match delays."
+        },
+        {
+          "mode": "METRORail",
+          "frictionLevel": "high",
+          "warning": "METRORail does not directly serve NRG Stadium.",
+          "action": "Do not assume rail solves matchday movement."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge likely. Heat makes outdoor waiting high risk.",
+          "action": "Have indoor or shaded waiting option. Do not rely solely on rideshare."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Houston",
+          "pros": "Best city amenities",
+          "risks": "Transfer required, car-dependent city",
+          "action": "Confirm shuttle or transfer plan before booking."
+        },
+        {
+          "zone": "Medical Center / NRG area",
+          "pros": "Close to stadium",
+          "risks": "Limited tourist amenities",
+          "action": "Good if matchday logistics are your priority."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "losangeles",
+      "name": "Los Angeles",
+      "stadium": "SoFi Stadium",
+      "frictionIndex": 7.5,
+      "primaryFriction": "Traffic + sprawl",
+      "distanceMiles": 18,
+      "infographicCaption": "LA sprawl — SoFi is in Inglewood",
+      "downtownCode": "LAX",
+      "stadiumCode": "SOF",
+      "advisory": "Los Angeles traffic on matchday is a serious planning factor.",
+      "stadiumReality": "SoFi Stadium is in Inglewood, approximately 18 miles from downtown LA. LA traffic is unpredictable and matchday adds significant congestion.",
+      "heatRisk": "medium",
+      "heatCopy": "Los Angeles in June and July averages 25–28°C. Heat is a moderate factor, lower than Dallas or Miami.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-12", "2026-06-19", "2026-06-26"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Metro K Line",
+          "frictionLevel": "medium",
+          "warning": "Metro K Line serves Inglewood but matchday capacity is uncertain.",
+          "action": "Check Metro matchday service. Allow extra time."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "I-405 on matchday is extremely slow. Post-match exit can take 90+ min.",
+          "action": "Avoid driving on I-405. Use shuttle or Metro."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Surge pricing likely. LA rideshare distances add significant cost.",
+          "action": "Budget for high fares. Have a backup plan."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown LA",
+          "pros": "Central location, Metro access",
+          "risks": "Traffic, 18 miles from stadium",
+          "action": "Use Metro K Line or shuttle. Avoid driving."
+        },
+        {
+          "zone": "Santa Monica / West LA",
+          "pros": "Beach access, good amenities",
+          "risks": "Far from stadium, I-405 traffic",
+          "action": "Shuttle is best option from this zone."
+        },
+        {
+          "zone": "Inglewood / near stadium",
+          "pros": "Minimal matchday friction",
+          "risks": "Limited tourist amenities",
+          "action": "Good if matchday logistics are priority."
+        },
+        {
+          "zone": "Hollywood / Koreatown",
+          "pros": "Good city experience",
+          "risks": "Traffic to stadium unpredictable",
+          "action": "Use Metro or shuttle. Do not drive matchday."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "seattle",
+      "name": "Seattle",
+      "stadium": "Lumen Field",
+      "frictionIndex": 6.5,
+      "primaryFriction": "Post-match pedestrian volume",
+      "distanceMiles": 0.5,
+      "infographicCaption": "Best transit access of all host cities",
+      "downtownCode": "SEA",
+      "stadiumCode": "LUM",
+      "advisory": "Seattle is the most transit-friendly host city. Plan for post-match pedestrian volume.",
+      "stadiumReality": "Lumen Field is in downtown Seattle, walking distance from the city center and well-served by Link Light Rail and buses.",
+      "heatRisk": "low",
+      "heatCopy": "Seattle in June and July averages 20–23°C. Heat is not a significant factor here.",
+      "transitType": "rail-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-27"],
+      "transportOptions": [
+        {
+          "mode": "Link Light Rail",
+          "frictionLevel": "low",
+          "warning": "Post-match volume is high but service is frequent.",
+          "action": "Use Link Light Rail. Most reliable option."
+        },
+        {
+          "mode": "Walking",
+          "frictionLevel": "low",
+          "warning": "Many hotels are within walking distance.",
+          "action": "Check if your hotel is walkable. Easiest option."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "medium",
+          "warning": "Post-match surge possible but less severe than other cities.",
+          "action": "Reasonable backup if not using rail."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Downtown Seattle parking is limited and expensive.",
+          "action": "Use transit. Do not drive to downtown Seattle on matchday."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Seattle",
+          "pros": "Walking distance to stadium, best city access",
+          "risks": "Higher hotel prices, post-match crowds",
+          "action": "Best option overall for Seattle matches."
+        },
+        {
+          "zone": "Capitol Hill / First Hill",
+          "pros": "Good dining scene, close to downtown",
+          "risks": "Short rail or rideshare to stadium",
+          "action": "Reasonable option. Easy transit connection."
+        },
+        {
+          "zone": "Bellevue / Eastside",
+          "pros": "Good hotel options",
+          "risks": "Requires crossing Lake Washington",
+          "action": "Allow extra time. Use Link Light Rail via downtown."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "philadelphia",
+      "name": "Philadelphia",
+      "stadium": "Lincoln Financial Field",
+      "frictionIndex": 7.0,
+      "primaryFriction": "Post-match SEPTA crush",
+      "distanceMiles": 4,
+      "infographicCaption": "SEPTA works — post-match volume is the friction",
+      "downtownCode": "PHL",
+      "stadiumCode": "LNF",
+      "advisory": "SEPTA connects downtown to the stadium but post-match volume requires patience.",
+      "stadiumReality": "Lincoln Financial Field is in South Philadelphia, approximately 4 miles from Center City. SEPTA connects the two but post-match crowds are heavy.",
+      "heatRisk": "medium",
+      "heatCopy": "Philadelphia in June and July averages 27–30°C. Heat is a moderate factor for outdoor post-match waits.",
+      "transitType": "rail-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-14", "2026-06-21", "2026-06-28"],
+      "transportOptions": [
+        {
+          "mode": "SEPTA Broad Street Line",
+          "frictionLevel": "medium",
+          "warning": "Post-match crush is significant. Expect 20–40 min platform waits.",
+          "action": "Use SEPTA. Plan to wait post-match rather than rushing to platform."
+        },
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge likely in South Philadelphia.",
+          "action": "SEPTA is better. Use rideshare only as backup."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "South Philadelphia post-match traffic is heavily congested.",
+          "action": "Avoid driving. Use SEPTA."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Center City Philadelphia",
+          "pros": "Best city access, SEPTA connection to stadium",
+          "risks": "Post-match SEPTA crush",
+          "action": "Best option. Use SEPTA Broad Street Line."
+        },
+        {
+          "zone": "South Philadelphia / near stadium",
+          "pros": "Walking distance to venue",
+          "risks": "Limited hotel options, neighborhood unfamiliar to tourists",
+          "action": "Good if matchday logistics are priority."
+        },
+        {
+          "zone": "Airport area",
+          "pros": "SEPTA Airport Line access",
+          "risks": "Requires transfer, less city experience",
+          "action": "Only if flight timing requires it."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    }
+  ]
+}
