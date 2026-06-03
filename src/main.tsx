@@ -26,17 +26,31 @@ function resetVersionedLocalStorage() {
 function showUpdateBanner(onRefresh: () => void) {
   if (document.getElementById(UPDATE_BANNER_ID)) return;
 
-  const banner = document.createElement("button");
+  const banner = document.createElement("div");
   banner.id = UPDATE_BANNER_ID;
-  banner.type = "button";
-  banner.textContent = "Update available — tap to refresh";
+  banner.className =
+    "fixed inset-x-0 z-[60] px-4 font-stitch-body text-stitch-neutral";
+  banner.style.bottom = "calc(4.75rem + env(safe-area-inset-bottom))";
   banner.setAttribute("aria-live", "polite");
-  banner.style.position = "fixed";
-  banner.style.left = "0";
-  banner.style.right = "0";
-  banner.style.bottom = "0";
-  banner.style.zIndex = "2147483647";
-  banner.addEventListener("click", onRefresh, { once: true });
+  banner.setAttribute("role", "status");
+
+  const inner = document.createElement("div");
+  inner.className =
+    "mx-auto flex max-w-5xl items-center justify-between gap-3 rounded-stitch-card border border-stitch-secondary/40 bg-stitch-primary px-4 py-3 shadow-lg";
+
+  const text = document.createElement("p");
+  text.className = "font-stitch-label text-[10px] uppercase tracking-wide";
+  text.textContent = "Update available — tap to refresh";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className =
+    "shrink-0 rounded-stitch-button bg-stitch-neutral px-3 py-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary";
+  button.textContent = "Refresh";
+  button.addEventListener("click", onRefresh, { once: true });
+
+  inner.append(text, button);
+  banner.appendChild(inner);
 
   document.body.appendChild(banner);
 }
