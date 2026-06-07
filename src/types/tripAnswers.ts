@@ -9,10 +9,10 @@ export type StayLocation =
   | "Not sure";
 
 export type StadiumTransit =
-  | "Public transit (train/bus)"
-  | "Rideshare (Uber/Lyft)"
+  | "Public transit"
+  | "Rideshare"
   | "Official shuttle"
-  | "Driving / personal vehicle"
+  | "Driving"
   | "Private transfer"
   | "Not sure yet";
 

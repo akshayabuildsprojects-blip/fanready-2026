@@ -1,12 +1,13 @@
 import { NavLink, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type TabId = "home" | "cities" | "brief";
 
-const tabs: { id: TabId; to: string; label: string; icon: "home" | "list" | "brief" }[] =
+const tabs: { id: TabId; to: string; labelKey: string; icon: "home" | "list" | "brief" }[] =
   [
-    { id: "home", to: "/", label: "Home", icon: "home" },
-    { id: "cities", to: "/cities", label: "City Friction", icon: "list" },
-    { id: "brief", to: "/brief", label: "Build Brief", icon: "brief" },
+    { id: "home", to: "/", labelKey: "home", icon: "home" },
+    { id: "cities", to: "/cities", labelKey: "cities", icon: "list" },
+    { id: "brief", to: "/brief", labelKey: "brief", icon: "brief" },
   ];
 
 function TabIcon({ name }: { name: (typeof tabs)[number]["icon"] }) {
@@ -57,13 +58,14 @@ function activeTabFromPath(pathname: string): TabId | null {
 }
 
 export default function BottomTabNav() {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const active = activeTabFromPath(pathname);
 
   return (
     <nav
       className="fixed inset-x-0 bottom-0 z-50 border-t border-stitch-primary/10 bg-stitch-neutral"
-      aria-label="Primary"
+      aria-label={t("primary_navigation")}
     >
       <div className="mx-auto flex max-w-5xl">
         {tabs.map((tab) => {
@@ -79,7 +81,7 @@ export default function BottomTabNav() {
               }`}
             >
               <TabIcon name={tab.icon} />
-              {tab.label}
+              {t(tab.labelKey)}
             </NavLink>
           );
         })}

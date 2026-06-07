@@ -1,11 +1,15 @@
+import { useTranslation } from "react-i18next";
+
 export default function GuidePage() {
+  const { t } = useTranslation();
+
   return (
     <div>
       <h1 className="font-stitch-headline text-3xl font-bold text-stitch-primary">
-        Guide
+        {t("guide")}
       </h1>
       <p className="mt-2 font-stitch-body text-sm text-stitch-primary/80">
-        Matchday planning guide content will appear here.
+        {t("guide_placeholder")}
       </p>
     </div>
   );

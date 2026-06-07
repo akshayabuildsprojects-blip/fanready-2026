@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { City } from "../types/city.ts";
 
 interface StadiumDistanceMapProps {
@@ -5,6 +6,7 @@ interface StadiumDistanceMapProps {
 }
 
 export default function StadiumDistanceMap({ city }: StadiumDistanceMapProps) {
+  const { t } = useTranslation();
   const distanceCaption = `${city.distanceMiles} mi`;
   const riskCaption = city.infographicCaption;
 
@@ -13,7 +15,11 @@ export default function StadiumDistanceMap({ city }: StadiumDistanceMapProps) {
       viewBox="0 0 320 72"
       className="h-auto w-full max-w-sm"
       role="img"
-      aria-label={`Distance map from ${city.downtownCode} to ${city.stadiumCode}, ${distanceCaption}`}
+      aria-label={t("distance_map_aria", {
+        from: city.downtownCode,
+        to: city.stadiumCode,
+        distance: distanceCaption,
+      })}
     >
       <text
         x="160"

@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import CityFrictionIndexCard from "../components/CityFrictionIndexCard.tsx";
 import citiesData from "../data/cities.json";
 import {
@@ -10,21 +11,22 @@ import type { City } from "../types/city.ts";
 const cities = citiesData.cities as City[];
 
 const FILTER_CHIPS = [
-  "HIGHEST FRICTION",
-  "STADIUM FAR FROM DOWNTOWN",
-  "HEAT RISK",
-  "DRIVING HEAVY",
-  "TRANSIT PLANNING",
-  "MULTI-CITY CAUTION",
+  "highest_friction",
+  "stadium_far_from_downtown",
+  "heat_risk",
+  "driving_heavy",
+  "transit_planning",
+  "multi_city_caution",
 ] as const;
 
 export default function CitiesPage() {
+  const { t } = useTranslation();
   const [selectedIds, setSelectedIds] = useState<string[]>(() =>
     readSelectedCities(),
   );
 
   const sorted = useMemo(
-    () => [...cities].sort((a, b) => b.frictionIndex - a.frictionIndex),
+    () => [...cities].sort((a, b) => a.name.localeCompare(b.name)),
     [],
   );
 
@@ -47,18 +49,17 @@ export default function CitiesPage() {
     <div className="-mx-4 space-y-6 px-4 pb-20">
         <header>
           <h1 className="font-stitch-headline text-3xl font-semibold text-stitch-primary">
-            City Friction Index
+            {t("cities_title")}
           </h1>
           <p className="mt-3 font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            Each host city has different matchday friction. Start with the
-            places you&apos;re attending or considering.
+            {t("cities_subtitle")}
           </p>
         </header>
 
         <div
           className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1"
           role="list"
-          aria-label="Filter tags"
+          aria-label={t("filter_tags")}
         >
           {FILTER_CHIPS.map((chip) => (
             <button
@@ -67,7 +68,7 @@ export default function CitiesPage() {
               className="shrink-0 border border-stitch-primary bg-transparent px-3 py-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
               style={{ borderRadius: "var(--radius-stitch-button)" }}
             >
-              {chip}
+              {t(chip)}
             </button>
           ))}
         </div>

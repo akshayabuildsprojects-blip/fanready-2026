@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { registerSW } from "virtual:pwa-register";
 import App from "./App.tsx";
+import i18n from "./i18n.ts";
 import "./index.css";
 
 const CURRENT_APP_VERSION = "1.0.0";
@@ -40,13 +41,13 @@ function showUpdateBanner(onRefresh: () => void) {
 
   const text = document.createElement("p");
   text.className = "font-stitch-label text-[10px] uppercase tracking-wide";
-  text.textContent = "Update available — tap to refresh";
+  text.textContent = i18n.t("update_available");
 
   const button = document.createElement("button");
   button.type = "button";
   button.className =
     "shrink-0 rounded-stitch-button bg-stitch-neutral px-3 py-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary";
-  button.textContent = "Refresh";
+  button.textContent = i18n.t("refresh");
   button.addEventListener("click", onRefresh, { once: true });
 
   inner.append(text, button);

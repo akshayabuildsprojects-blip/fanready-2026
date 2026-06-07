@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface HotelZoneCardProps {
   zone: string;
   pros: string;
@@ -11,6 +13,8 @@ export default function HotelZoneCard({
   risks,
   action,
 }: HotelZoneCardProps) {
+  const { t } = useTranslation();
+
   return (
     <article className="rounded-stitch-card border border-stitch-primary/10 bg-stitch-neutral p-4">
       <h3 className="font-stitch-headline text-lg font-semibold text-stitch-primary">
@@ -19,7 +23,7 @@ export default function HotelZoneCard({
       <dl className="mt-3 space-y-3">
         <div>
           <dt className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-tertiary">
-            Pros
+            {t("pros")}
           </dt>
           <dd className="mt-1 font-stitch-body text-sm text-stitch-primary/90">
             {pros}
@@ -27,7 +31,7 @@ export default function HotelZoneCard({
         </div>
         <div>
           <dt className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-danger">
-            Risks
+            {t("risks")}
           </dt>
           <dd className="mt-1 font-stitch-body text-sm text-stitch-primary/90">
             {risks}
@@ -35,7 +39,7 @@ export default function HotelZoneCard({
         </div>
         <div>
           <dt className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            Action
+            {t("action")}
           </dt>
           <dd className="mt-1 font-stitch-label text-xs text-stitch-primary/80">
             {action}

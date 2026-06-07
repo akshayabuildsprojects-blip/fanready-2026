@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import AnimatedFrictionScore from "./AnimatedFrictionScore.tsx";
 import type { City } from "../types/city.ts";
 import { frictionScoreColor } from "../lib/stitch.ts";
@@ -14,10 +15,10 @@ interface CityFrictionCardProps {
 const MAX_DISTANCE_MILES = 35;
 
 function frictionLevelLabel(score: number): string {
-  if (score >= 8.5) return "SEVERE";
-  if (score >= 7.5) return "HIGH";
-  if (score >= 6.5) return "MODERATE";
-  return "LOW";
+  if (score >= 8.5) return "friction_severe";
+  if (score >= 7.5) return "friction_high";
+  if (score >= 6.5) return "friction_moderate";
+  return "low";
 }
 
 function displayCityName(name: string): string {
@@ -32,6 +33,7 @@ export default function CityFrictionCard({
   isSelected = false,
   onSelect,
 }: CityFrictionCardProps) {
+  const { t } = useTranslation();
   const badgeColor = frictionScoreColor(city.frictionIndex);
   const barWidth = Math.min(
     100,
@@ -51,7 +53,7 @@ export default function CityFrictionCard({
           <span
             className="absolute right-3 top-3 px-2 py-1 font-stitch-label text-xs font-bold text-stitch-neutral"
             style={{ backgroundColor: badgeColor }}
-            aria-label={`Friction index ${city.frictionIndex}`}
+            aria-label={`${t("friction_index")} ${city.frictionIndex}`}
           >
             <AnimatedFrictionScore score={city.frictionIndex} />
           </span>
@@ -62,14 +64,16 @@ export default function CityFrictionCard({
             {displayCityName(city.name)}
           </h2>
           <p className="mt-1 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-secondary">
-            FRICTION: {frictionLevelLabel(city.frictionIndex)}
+            {t(frictionLevelLabel(city.frictionIndex))}
           </p>
 
           <div className="mt-3 h-px bg-stitch-primary/10" />
 
           <div className="mt-3 flex items-baseline justify-between gap-4 font-stitch-label text-[10px] uppercase tracking-wide text-stitch-primary">
-            <span>Downtown to Stadium</span>
-            <span>{city.distanceMiles} miles</span>
+            <span>{t("downtown_to_stadium")}</span>
+            <span>
+              {city.distanceMiles} {t("miles")}
+            </span>
           </div>
 
           <div
@@ -98,7 +102,7 @@ export default function CityFrictionCard({
               style={{ borderRadius: "var(--radius-stitch-button)" }}
               aria-pressed={isSelected}
             >
-              {isSelected ? "Selected" : "Select city"}
+              {isSelected ? t("selected") : t("select_city")}
             </button>
           )}
           {showAddToBrief && (
@@ -107,7 +111,7 @@ export default function CityFrictionCard({
               className="border border-stitch-primary/20 bg-stitch-neutral px-4 py-2 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary"
               style={{ borderRadius: "var(--radius-stitch-button)" }}
             >
-              Add to brief
+              {t("add_to_brief")}
             </button>
           )}
         </div>

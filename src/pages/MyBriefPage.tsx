@@ -1,10 +1,10 @@
 import { useMemo, useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import PerCityFrictionBriefCard from "../components/PerCityFrictionBriefCard.tsx";
 import {
   checklistCities,
   formatCityList,
-  getComplexitySummary,
   getPrimaryRisks,
   getTripComplexity,
   resolveBriefCities,
@@ -112,13 +112,25 @@ function ShieldAtIcon() {
   );
 }
 
-const DO_NOT_ASSUME = [
-  "Stadium ≠ City Center. Major venues are located in outlying suburbs with distinct transport networks.",
-  "Transit availability. Unlike European hubs, public transit is not the primary mode for several host venues.",
-  "Post-match rideshare. Pricing surges and wait times can exceed 3 hours in Miami and Dallas zones.",
+const DO_NOT_ASSUME_KEYS = [
+  "assumption_stadium_center",
+  "assumption_transit",
+  "assumption_rideshare",
 ] as const;
 
+const RISK_KEYS: Record<string, string> = {
+  "STADIUM DISTANCE": "risk_stadium_distance",
+  "HUMID HEAT INDEX": "risk_humid_heat_index",
+  "POST-MATCH EGRESS": "risk_post_match_egress",
+  "CROSS-BORDER TRANSIT": "risk_cross_border_transit",
+  "PARKING & TRAFFIC": "risk_parking_traffic",
+  "LOCAL NAVIGATION": "risk_local_navigation",
+  "TIME ZONE DRIFT": "risk_time_zone_drift",
+  "MATCHDAY CROWDING": "risk_matchday_crowding",
+};
+
 export default function MyBriefPage() {
+  const { t } = useTranslation();
   const tripAnswers = readTripAnswers();
   const selectedIds = readSelectedCities();
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
@@ -141,19 +153,19 @@ export default function MyBriefPage() {
       <>
         <div className="-mx-4 space-y-4 px-4 pb-28">
           <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            CONFIDENTIAL INTELLIGENCE REPORT
+            {t("confidential")}
           </p>
           <h1 className="font-stitch-headline text-3xl font-semibold text-stitch-primary">
-            Your Matchday Readiness Brief
+            {t("your_brief")}
           </h1>
           <p className="font-stitch-body text-sm text-stitch-primary/80">
-            No brief found. Complete the readiness checker first.
+            {t("no_brief_found")}
           </p>
           <Link
             to="/brief"
             className="inline-flex font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary underline-offset-2 hover:underline"
           >
-            ← Build your brief
+            {t("build_your_brief")}
           </Link>
         </div>
       </>
@@ -161,7 +173,7 @@ export default function MyBriefPage() {
   }
 
   const complexity = getTripComplexity(tripAnswers, resolved.length);
-  const complexityLabel = complexity.toUpperCase();
+  const complexityLabel = t(`${complexity}_complexity`);
   const complexityColor =
     complexity === "high"
       ? "text-stitch-danger"
@@ -170,10 +182,10 @@ export default function MyBriefPage() {
         : "text-stitch-tertiary";
 
   const checklistItems = [
-    `Confirm ground transport from airport to ${primaryCity} accommodation.`,
-    'Review stadium bag policy (Clear bag only, max size 12"x6"x12").',
-    `Verify visa status for US/Canada border crossing for ${borderCity} leg.`,
-    `Download offline maps for ${mapCity} sector (Spotty cellular data).`,
+    t("checklist_airport_transport", { city: primaryCity }),
+    t("checklist_bag_policy"),
+    t("checklist_visa_status", { city: borderCity }),
+    t("checklist_offline_maps", { city: mapCity }),
   ];
 
   const firstCity = resolved[0]?.city;
@@ -193,24 +205,24 @@ export default function MyBriefPage() {
       <div className="-mx-4 space-y-8 px-4 pb-28">
         <header>
           <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            CONFIDENTIAL INTELLIGENCE REPORT
+            {t("confidential")}
           </p>
           <h1 className="mt-2 font-stitch-headline text-3xl font-semibold text-stitch-primary">
-            Your Matchday Readiness Brief
+            {t("your_brief")}
           </h1>
           <Link
             to="/brief"
             className="mt-4 inline-flex items-center justify-center border border-stitch-primary bg-transparent px-4 py-2.5 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            EDIT BRIEF
+            {t("edit_brief")}
           </Link>
         </header>
 
         {/* Section 1: Trip summary */}
         <section className="border border-stitch-primary/10 bg-stitch-primary/[0.03] p-5">
           <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            Trip complexity
+            {t("trip_complexity")}
           </p>
           <div className="mt-2 flex items-center gap-2">
             <span
@@ -221,53 +233,53 @@ export default function MyBriefPage() {
             {complexity === "high" && <WarningTriangle />}
           </div>
           <p className="mt-3 font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            {getComplexitySummary(complexity)}
+            {t(`complexity_summary_${complexity}`)}
           </p>
 
           <p className="mt-5 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            Cities identified
+            {t("cities_identified")}
           </p>
           <p className="mt-1 font-stitch-headline text-xl font-semibold text-stitch-primary">
             {resolved.length > 0
               ? formatCityList(resolved)
-              : "No host cities selected"}
+              : t("no_host_cities")}
           </p>
 
           <p className="mt-5 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            Primary risks
+            {t("primary_risks")}
           </p>
           <ul className="mt-2 list-inside list-disc space-y-1 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
             {getPrimaryRisks(tripAnswers, resolved).map((risk) => (
-              <li key={risk}>{risk}</li>
+              <li key={risk}>{t(RISK_KEYS[risk] ?? risk)}</li>
             ))}
           </ul>
         </section>
 
-        <SectionDivider label="01. OVERALL TRIP WARNINGS" />
+        <SectionDivider label={`01. ${t("overall_warnings")}`} />
 
         <section className="space-y-3">
           {resolved.length >= 2 && (
             <WarningCard
               icon={<RouteIcon />}
-              title="Multi-City Logistics"
-              body="Crossing multiple time zones (CST/EST). Recommended minimum 48hr buffer between matchdays for recovery."
+              title={t("multi_city_logistics")}
+              body={t("multi_city_logistics_body")}
             />
           )}
           {tripAnswers.visitingFromAbroad && (
             <WarningCard
               icon={<PassportIcon />}
-              title="Entry Requirements"
-              body="Domestic flights still require valid government ID. Check passport validity for internal North American travel."
+              title={t("entry_requirements")}
+              body={t("entry_requirements_body")}
             />
           )}
           <WarningCard
             icon={<ShieldIcon />}
-            title="Market Fraud Alert"
-            body="High volume of phishing in Dallas/Miami sectors. Only use the official FIFA ticketing mobile applications."
+            title={t("market_fraud_alert")}
+            body={t("market_fraud_alert_body")}
           />
         </section>
 
-        <SectionDivider label="02. PER-CITY FRICTION INDEX" />
+        <SectionDivider label={`02. ${t("per_city_friction")}`} />
 
         <section className="space-y-4">
           {resolved.length > 0 ? (
@@ -280,13 +292,12 @@ export default function MyBriefPage() {
             ))
           ) : (
             <p className="font-stitch-body text-sm text-stitch-primary/80">
-              Select host cities in the City Friction Index to populate
-              per-city analysis.
+              {t("select_cities_for_analysis")}
             </p>
           )}
         </section>
 
-        <SectionDivider label="03. BEFORE MATCHDAY CHECKLIST" />
+        <SectionDivider label={`03. ${t("before_matchday")}`} />
 
         <section className="border border-stitch-primary/10 bg-stitch-neutral">
           {checklistItems.map((item, index) => (
@@ -307,31 +318,29 @@ export default function MyBriefPage() {
           ))}
         </section>
 
-        <SectionDivider label="04. DO NOT ASSUME" />
+        <SectionDivider label={`04. ${t("do_not_assume")}`} />
 
         <section className="space-y-3">
-          {DO_NOT_ASSUME.map((text, index) => (
+          {DO_NOT_ASSUME_KEYS.map((key, index) => (
             <div
-              key={text}
+              key={key}
               className="flex gap-4 border border-stitch-primary/10 bg-stitch-neutral p-4"
             >
               <span className="font-stitch-label text-[10px] font-bold text-stitch-primary/50">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-                {text}
+                {t(key)}
               </p>
             </div>
           ))}
         </section>
 
-        <SectionDivider label="05. VERIFY BEFORE DEPARTURE" />
+        <SectionDivider label={`05. ${t("verify_departure")}`} />
 
         <section className="space-y-3">
           <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            All friction guidance is based on publicly available information.
-            Always verify transport, ticketing, and entry requirements through
-            official sources before matchday.
+            {t("verify_departure_body")}
           </p>
           <a
             href="https://www.fifa.com/"
@@ -340,7 +349,7 @@ export default function MyBriefPage() {
             className="flex w-full items-center justify-between gap-2 bg-stitch-primary px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-neutral"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            <span>OFFICIAL FIFA INFO</span>
+            <span>{t("official_fifa")}</span>
             <span aria-hidden>→</span>
           </a>
           <a
@@ -350,7 +359,7 @@ export default function MyBriefPage() {
             className="flex w-full items-center justify-between gap-2 border border-stitch-primary bg-transparent px-3 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            <span>HOST CITY SITE</span>
+            <span>{t("host_city_site")}</span>
             <SearchGlobeIcon />
           </a>
           <a
@@ -360,18 +369,18 @@ export default function MyBriefPage() {
             className="flex w-full items-center justify-between gap-2 border border-stitch-primary bg-transparent px-3 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            <span>STADIUM POLICY</span>
+            <span>{t("stadium_policy")}</span>
             <ShieldAtIcon />
           </a>
         </section>
 
         <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
           <button type="button" className="hover:text-stitch-primary">
-            LEGAL DISCLAIMER
+            {t("legal_disclaimer")}
           </button>
           <span aria-hidden>|</span>
           <button type="button" className="hover:text-stitch-primary">
-            SOURCE CREDITS
+            {t("source_credits")}
           </button>
         </div>
       </div>

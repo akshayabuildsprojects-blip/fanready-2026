@@ -1,448 +1,450 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import AnimatedFrictionScore from "../components/AnimatedFrictionScore.tsx";
 import citiesData from "../data/cities.json";
-import {
-  displayCityArea,
-  displayCityShort,
-  frictionIndexTier,
-  geospatialRailLabel,
-  intelligenceRef,
-  primaryFrictionBody,
-  securityAlertBody,
-  transportBadge,
-  venueLogisticsBody,
-} from "../lib/cityGuide.ts";
-import type { City } from "../types/city.ts";
+import { geospatialRailLabel, intelligenceRef, transportBadge } from "../lib/cityGuide.ts";
+import type { City, FrictionLevel, TransportOption } from "../types/city.ts";
 
 const cities = citiesData.cities as City[];
 
-function SectionLabel({ children }: { children: string }) {
+type SectionId = "movement" | "environmental" | "security" | "bag";
+
+const WEATHER_QUERIES: Record<string, string> = {
+  dallas: "weather+in+Arlington+Texas",
+  boston: "weather+in+Foxborough+Massachusetts",
+  miami: "weather+in+Miami+Gardens+Florida",
+  nyc: "weather+in+East+Rutherford+New+Jersey",
+  kansascity: "weather+in+Kansas+City+Missouri",
+  atlanta: "weather+in+Atlanta+Georgia",
+  houston: "weather+in+Houston+Texas",
+  losangeles: "weather+in+Inglewood+California",
+  seattle: "weather+in+Seattle+Washington",
+  philadelphia: "weather+in+Philadelphia+Pennsylvania",
+};
+
+function ThermometerIcon() {
   return (
-    <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-      {children}
-    </p>
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      aria-hidden
+    >
+      <path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z" />
+      <path d="M12 16v-6" strokeLinecap="round" />
+    </svg>
   );
 }
 
-function NumberedSection({
-  number,
-  name,
-  title,
-  children,
-  alert,
-}: {
-  number: string;
-  name: string;
-  title: string;
-  children: ReactNode;
-  alert?: boolean;
-}) {
+function heatPillClass(level: FrictionLevel): string {
+  if (level === "high") return "border-stitch-danger text-stitch-danger";
+  if (level === "medium") return "border-stitch-secondary text-stitch-secondary";
+  return "border-stitch-tertiary text-stitch-tertiary";
+}
+
+function scamLevel(city: City): "elevated" | "standard" {
+  return city.frictionIndex >= 7.5 || city.drivingRisk === "high"
+    ? "elevated"
+    : "standard";
+}
+
+function scamPillClass(level: "elevated" | "standard"): string {
+  return level === "elevated"
+    ? "border-stitch-danger text-stitch-danger"
+    : "border-stitch-tertiary text-stitch-tertiary";
+}
+
+function movementStatus(option: TransportOption): {
+  key: string;
+  className: string;
+} {
+  const mode = option.mode.toLowerCase();
+  if (mode.includes("driving") || mode.includes("private")) {
+    return {
+      key: "avoid",
+      className: "bg-stitch-primary/10 text-stitch-primary/70",
+    };
+  }
+  if (mode.includes("rideshare") || option.frictionLevel === "high") {
+    return {
+      key: "high_risk",
+      className: "bg-stitch-secondary/30 text-stitch-primary",
+    };
+  }
+  const badge = transportBadge(option);
+  if (badge.variant === "recom") {
+    return {
+      key: "recom",
+      className: "bg-stitch-tertiary/20 text-stitch-tertiary",
+    };
+  }
+  return {
+    key: "caution",
+    className: "bg-stitch-secondary/20 text-stitch-primary",
+  };
+}
+
+function railLabelKey(city: City): string {
+  const label = geospatialRailLabel(city);
+  if (label.includes("LIMITED")) return "limited_rail";
+  if (label.includes("AVAILABLE")) return "rail_available";
+  return "no_rail";
+}
+
+function weatherLink(city: City): string {
+  const isIOS =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const host = isIOS ? "maps.apple.com" : "maps.google.com";
+  const query =
+    WEATHER_QUERIES[city.id] ?? `weather+in+${encodeURIComponent(city.name)}`;
+  return `https://${host}/?q=${query}`;
+}
+
+function CompactGeoStrip({ city }: { city: City }) {
+  const { t } = useTranslation();
+
   return (
-    <section className="space-y-3">
-      <p
-        className={`font-stitch-label text-[10px] font-bold uppercase tracking-wide ${
-          alert ? "text-stitch-danger" : "text-stitch-primary"
-        }`}
-      >
-        {number} // {name}
+    <section
+      className="border border-stitch-primary/10 bg-stitch-primary/[0.03] px-4 py-3"
+      aria-label={`Distance from ${city.downtownCode} to ${city.stadiumCode}`}
+    >
+      <div className="flex items-center gap-3">
+        <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+          {city.downtownCode}
+        </span>
+        <svg
+          viewBox="0 0 220 28"
+          className="h-7 min-w-0 flex-1"
+          role="presentation"
+        >
+          <line
+            x1="12"
+            y1="14"
+            x2="208"
+            y2="14"
+            stroke="var(--stitch-primary)"
+            strokeWidth="1"
+            strokeDasharray="6 6"
+            opacity="0.3"
+          />
+          <circle cx="12" cy="14" r="5" fill="var(--stitch-primary)" />
+          <circle cx="208" cy="14" r="5" fill="var(--stitch-secondary)" />
+        </svg>
+        <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+          {city.stadiumCode}
+        </span>
+      </div>
+      <div className="mt-2 flex items-center justify-center gap-3 font-stitch-label text-[9px] uppercase tracking-wide">
+        <span className="font-bold text-stitch-primary">
+          {city.distanceMiles} {t("miles")}
+        </span>
+        <span className="text-stitch-danger">{t(railLabelKey(city))}</span>
+      </div>
+      <p className="mt-1 text-center font-stitch-body text-xs text-stitch-primary/70">
+        {city.infographicCaption}
       </p>
-      <div className="h-px bg-stitch-primary/10" />
-      <h2 className="font-stitch-headline text-xl font-semibold text-stitch-primary">
-        {title}
-      </h2>
-      {children}
     </section>
   );
 }
 
-function WarningTriangle({ className = "text-stitch-neutral" }: { className?: string }) {
+function WarningPill({ text, className }: { text: string; className: string }) {
   return (
-    <svg
-      width={16}
-      height={16}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      className={className}
-      aria-hidden
+    <div
+      className={`flex min-h-16 flex-1 items-center justify-center border px-2 text-center font-stitch-label text-[10px] font-bold uppercase tracking-wide ${className}`}
     >
-      <path d="M10.3 4.9 2.6 18.2A2 2 0 0 0 4.3 21h15.4a2 2 0 0 0 1.7-2.8L13.7 4.9a2 2 0 0 0-3.4 0z" />
-      <path d="M12 9v5M12 17h.01" strokeLinecap="round" />
-    </svg>
+      {text}
+    </div>
   );
 }
 
-function BarChartIcon() {
+function AccordionSection({
+  id,
+  title,
+  summary,
+  expanded,
+  onToggle,
+  children,
+}: {
+  id: SectionId;
+  title: string;
+  summary: ReactNode;
+  expanded: boolean;
+  onToggle: (id: SectionId) => void;
+  children: ReactNode;
+}) {
   return (
-    <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <rect x="4" y="14" width="3" height="6" />
-      <rect x="10" y="10" width="3" height="10" />
-      <rect x="16" y="6" width="3" height="14" />
-    </svg>
-  );
-}
-
-function StadiumIcon() {
-  return (
-    <svg
-      width={20}
-      height={20}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      aria-hidden
-    >
-      <path d="M4 10h16M6 10V8a6 6 0 0 1 12 0v2M5 10v8h14v-8" strokeLinejoin="round" />
-      <path d="M8 18v2M16 18v2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function FlameIcon() {
-  return (
-    <svg
-      width={18}
-      height={18}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      className="text-stitch-secondary"
-      aria-hidden
-    >
-      <path
-        d="M12 3c2 4 1 6-2 8 2 0 4 2 4 6a4 4 0 0 1-8 0c0-3 2-5 4-6-3-2-4-4-2-8 2 0 4-1 6-2 8z"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg
-      width={18}
-      height={18}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      className="text-stitch-danger"
-      aria-hidden
-    >
-      <path d="M12 3 4 7v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4z" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SearchGlobeIcon() {
-  return (
-    <svg
-      width={16}
-      height={16}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden
-    >
-      <circle cx="10" cy="10" r="6" />
-      <path d="M4 10h12M10 4a9 9 0 0 1 0 12M10 4a9 9 0 0 0 0 12M15 15l5 5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ShieldAtIcon() {
-  return (
-    <svg
-      width={16}
-      height={16}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden
-    >
-      <path d="M12 3 4 7v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4z" strokeLinejoin="round" />
-      <text x="12" y="15" textAnchor="middle" fontSize="8" fill="currentColor" stroke="none">
-        @
-      </text>
-    </svg>
+    <section className="overflow-hidden border border-stitch-primary/10 bg-stitch-neutral">
+      <button
+        type="button"
+        onClick={() => onToggle(id)}
+        className="flex w-full items-start justify-between gap-4 p-4 text-left"
+        aria-expanded={expanded}
+      >
+        <div className="min-w-0 flex-1 space-y-3">
+          <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+            {title}
+          </p>
+          <div>{summary}</div>
+        </div>
+        <span
+          className={`mt-0.5 font-stitch-headline text-2xl leading-none text-stitch-primary transition-transform duration-200 ${
+            expanded ? "rotate-90" : ""
+          }`}
+          aria-hidden
+        >
+          ›
+        </span>
+      </button>
+      <div
+        className={`grid transition-all duration-200 ease-out ${
+          expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="space-y-3 border-t border-stitch-primary/10 px-4 pb-4 pt-3 font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
+            {children}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
 export default function CityPage() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const city = cities.find((c) => c.id === id);
+  const [expandedSection, setExpandedSection] = useState<SectionId | null>(null);
 
   if (!city) {
     return (
       <>
         <div className="-mx-4 space-y-4 px-4 pb-28">
           <p className="font-stitch-body text-sm text-stitch-primary/80">
-            City not found.
+            {t("city_not_found")}
           </p>
           <Link
             to="/cities"
             className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary underline-offset-2 hover:underline"
           >
-            ← City friction index
+            {t("back_to_city_friction_index")}
           </Link>
         </div>
       </>
     );
   }
 
-  const tier = frictionIndexTier(city.frictionIndex);
-  const km = Math.round(city.distanceMiles * 1.609);
-  const downtownLabel = `DOWNTOWN ${displayCityShort(city.name).toUpperCase()}`;
-  const stadiumArea = displayCityArea(city.name);
-  const officialCityLink =
-    city.dynamicFields.officialCityLink ?? "https://www.fifa.com/";
-  const stadiumLink =
-    city.dynamicFields.bagPolicyLink ??
-    city.dynamicFields.transportLink ??
-    "https://www.fifa.com/";
-  const showHeat =
-    city.heatRisk === "high" || city.heatRisk === "medium";
+  const scam = scamLevel(city);
+  const bagPolicy =
+    city.dynamicFields.bagPolicy ??
+    t("bag_policy_fallback");
+  const shuttleLink = city.dynamicFields.shuttleLink ?? "#";
+  const toggleSection = (section: SectionId) => {
+    setExpandedSection((current) => (current === section ? null : section));
+  };
 
   return (
     <>
-      <div className="-mx-4 space-y-8 px-4 pb-28">
-        {/* Header */}
-        <header className="space-y-4">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-            <p className="font-stitch-headline text-xl font-semibold text-stitch-primary">
-              FanReady 2026
+      <div className="-mx-4 space-y-5 px-4 pb-28">
+        <header className="relative border-b-4 border-stitch-primary pb-5 pr-24">
+          <p className="font-stitch-label text-[10px] font-bold uppercase tracking-[0.2em] text-stitch-primary">
+            {t("intelligence_report")}
+          </p>
+          <p className="mt-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary/60">
+            REF: {intelligenceRef(city)}
+          </p>
+          <h1 className="mt-4 font-stitch-headline text-3xl font-semibold uppercase text-stitch-primary">
+            {city.name}
+          </h1>
+          <p className="mt-1 font-stitch-label text-[10px] font-bold uppercase tracking-[0.16em] text-stitch-primary/75">
+            {city.stadium}
+          </p>
+          <div className="absolute right-0 top-0 border-2 border-stitch-danger px-4 py-2 text-center text-stitch-danger">
+            <p className="font-stitch-headline text-4xl font-semibold leading-none">
+              <AnimatedFrictionScore score={city.frictionIndex} />
             </p>
-            <p className="font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-primary/60 sm:text-right">
-              Unofficial travel readiness tool
+            <p className="mt-1 font-stitch-label text-[10px] font-bold uppercase tracking-wide">
+              {t("friction")}
             </p>
           </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="bg-stitch-primary px-2 py-1 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral">
-              Intelligence report
-            </span>
-            <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-              REF: {intelligenceRef(city)}
-            </span>
-          </div>
-
-          <div>
-            <h1 className="font-stitch-headline text-3xl font-semibold text-stitch-primary">
-              {city.name} Matchday Guide
-            </h1>
-            <p className="mt-2 font-stitch-headline text-lg text-stitch-primary/90">
-              {city.stadium} friction overview for World Cup travelers
+          <div className="mt-5 space-y-1">
+            <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-secondary">
+              {t("primary_friction")}
+            </p>
+            <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
+              <strong className="text-stitch-primary">
+                {city.primaryFriction}.
+              </strong>{" "}
+              {city.advisory}
             </p>
           </div>
         </header>
 
-        {/* Friction index */}
-        <section className="border border-stitch-danger bg-stitch-neutral px-6 py-8 text-center">
-          <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-            Friction index
-          </p>
-          <p className="mt-3 font-stitch-headline text-5xl font-semibold text-stitch-danger">
-            <AnimatedFrictionScore score={city.frictionIndex} />
-          </p>
-          <p className="mt-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-danger">
-            {tier}
-          </p>
+        <section className="grid grid-cols-3 gap-2">
+          <WarningPill
+            text={t(`heat_${city.heatRisk}`)}
+            className={heatPillClass(city.heatRisk)}
+          />
+          <WarningPill
+            text={t(`scam_${scam}`)}
+            className={scamPillClass(scam)}
+          />
+          <WarningPill
+            text={t("bags_check")}
+            className="border-stitch-primary/20 text-stitch-primary/70"
+          />
         </section>
 
-        <section className="space-y-3">
-          <SectionLabel>Primary friction</SectionLabel>
-          <h2 className="font-stitch-headline text-xl font-semibold text-stitch-primary">
-            {city.primaryFriction}
-          </h2>
-          <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            {primaryFrictionBody(city)}
-          </p>
-          <div className="flex gap-3 bg-stitch-primary p-4 text-stitch-neutral">
-            <WarningTriangle />
-            <p className="font-stitch-body text-sm leading-relaxed">
-              {city.advisory}
-            </p>
-          </div>
-        </section>
+        <CompactGeoStrip city={city} />
 
-        {/* Geospatial */}
-        <section className="space-y-3">
-          <SectionLabel>
-            {`Geospatial reality: ${city.distanceMiles}-mile transit void`}
-          </SectionLabel>
-          <div className="border border-stitch-primary/10 bg-stitch-primary/[0.03] p-4">
-            <div className="flex items-stretch justify-between gap-2">
-              <div className="flex flex-1 flex-col items-center text-center">
-                <div className="flex h-14 w-14 items-center justify-center border border-stitch-primary bg-stitch-neutral text-stitch-primary">
-                  <BarChartIcon />
-                </div>
-                <p className="mt-2 font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-primary">
-                  {downtownLabel}
+        <div className="space-y-3">
+          <AccordionSection
+            id="movement"
+            title={t("movement")}
+            expanded={expandedSection === "movement"}
+            onToggle={toggleSection}
+            summary={
+              <div className="space-y-2">
+                {city.transportOptions.map((option) => {
+                  const status = movementStatus(option);
+                  return (
+                    <div
+                      key={option.mode}
+                      className="flex items-center justify-between gap-3"
+                    >
+                      <span className="font-stitch-label text-[10px] font-bold uppercase tracking-[0.14em] text-stitch-primary">
+                        {option.mode}
+                      </span>
+                      <span className="min-w-14 flex-1 border-t border-stitch-primary/15" />
+                      <span
+                        className={`shrink-0 px-2 py-1 font-stitch-label text-[9px] font-bold uppercase tracking-wide ${status.className}`}
+                      >
+                        {t(status.key)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            }
+          >
+            {city.transportOptions.map((option) => (
+              <div
+                key={option.mode}
+                className="border-t border-stitch-primary/10 pt-3 first:border-t-0 first:pt-0"
+              >
+                <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+                  {option.mode}
                 </p>
-                <p className="font-stitch-label text-[8px] uppercase tracking-wide text-stitch-primary/60">
-                  Primary hotel hub
+                <p className="mt-1">{option.warning}</p>
+                <p className="mt-1 text-stitch-primary">
+                  <strong>{t("action")}:</strong> {option.action}
                 </p>
               </div>
-
-              <div className="flex flex-1 flex-col items-center justify-center px-1">
-                <div className="w-full border-t border-stitch-primary/30" />
-                <p className="mt-2 text-center font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-primary">
-                  {city.distanceMiles} miles ({km} km)
-                </p>
-                <p className="font-stitch-label text-[8px] font-bold uppercase tracking-wide text-stitch-danger">
-                  {geospatialRailLabel(city)}
-                </p>
-                <div className="mt-2 w-full border-t border-stitch-primary/30" />
-              </div>
-
-              <div className="flex flex-1 flex-col items-center text-center">
-                <div className="flex h-14 w-14 items-center justify-center border border-stitch-secondary/40 bg-stitch-secondary/20 text-stitch-primary">
-                  <StadiumIcon />
-                </div>
-                <p className="mt-2 font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-primary">
-                  {city.stadium.toUpperCase()}
-                </p>
-                <p className="font-stitch-label text-[8px] uppercase tracking-wide text-stitch-primary/60">
-                  {stadiumArea}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <NumberedSection number="01" name="VENUE LOGISTICS" title="Stadium Reality Check">
-          <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            {venueLogisticsBody(city)}
-          </p>
-        </NumberedSection>
-
-        <NumberedSection number="02" name="STRATEGIC LODGING" title="Lodging Vectors">
-          <ul className="space-y-2 font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            {city.hotelZones.map((zone) => (
-              <li key={zone.zone}>
-                • <strong>{zone.zone}</strong>: {zone.pros || zone.action}
-              </li>
             ))}
-          </ul>
-        </NumberedSection>
+          </AccordionSection>
 
-        <NumberedSection number="03" name="MOVEMENT" title="Transport Hierarchy">
-          <div className="divide-y divide-stitch-primary/10 border border-stitch-primary/10">
-            {city.transportOptions.map((option) => {
-              const badge = transportBadge(option);
-              return (
-                <div
-                  key={option.mode}
-                  className="flex items-center justify-between gap-4 bg-stitch-neutral px-4 py-3"
-                >
-                  <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-                    {option.mode}
-                  </span>
-                  <span
-                    className={
-                      badge.variant === "recom"
-                        ? "bg-stitch-tertiary px-2 py-0.5 font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-neutral"
-                        : badge.variant === "risk"
-                          ? "font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-danger"
-                          : "font-stitch-label text-[9px] font-bold uppercase tracking-wide text-stitch-primary/70"
-                    }
-                  >
-                    {badge.text}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </NumberedSection>
-
-        {showHeat && (
-          <NumberedSection number="04" name="ENVIRONMENTAL" title="Heat Advisory">
-            <div className="flex gap-2">
-              <FlameIcon />
-              <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-                {city.heatCopy}
+          <AccordionSection
+            id="environmental"
+            title={t("environmental")}
+            expanded={expandedSection === "environmental"}
+            onToggle={toggleSection}
+            summary={
+              <p className="font-stitch-body text-sm text-stitch-primary/75">
+                <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+                  {t(`heat_${city.heatRisk}`)}
+                </span>{" "}
+                — {city.heatCopy}
               </p>
-            </div>
-          </NumberedSection>
-        )}
+            }
+          >
+            <p>{city.heatCopy}</p>
+            <a
+              href={weatherLink(city)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-full items-center justify-between gap-3 border border-stitch-primary bg-transparent px-4 py-3 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary"
+              style={{ borderRadius: "var(--radius-stitch-button)" }}
+            >
+              <span className="flex items-center gap-2">
+                <ThermometerIcon />
+                {t("check_weather")}
+              </span>
+              <span aria-hidden>→</span>
+            </a>
+          </AccordionSection>
 
-        <NumberedSection
-          number="05"
-          name="SECURITY ALERT"
-          title="Anti-Fraud Protocols"
-          alert
-        >
-          <div className="flex gap-2">
-            <ShieldIcon />
-            <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-              {securityAlertBody(city)}
-            </p>
-          </div>
-        </NumberedSection>
+          <AccordionSection
+            id="security"
+            title={t("security")}
+            expanded={expandedSection === "security"}
+            onToggle={toggleSection}
+            summary={
+              <p className="font-stitch-body text-sm text-stitch-primary/75">
+                <span className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-danger">
+                  {t("scam_alert")}: {t(`scam_${scam}`)}
+                </span>{" "}
+                — {t("security_summary")}
+              </p>
+            }
+          >
+            <p>{t("security_advisory")}</p>
+          </AccordionSection>
+
+          <AccordionSection
+            id="bag"
+            title={t("bag_policy")}
+            expanded={expandedSection === "bag"}
+            onToggle={toggleSection}
+            summary={
+              <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary/75">
+                {t("bag_policy_check")}
+              </p>
+            }
+          >
+            <p>{bagPolicy}</p>
+          </AccordionSection>
+        </div>
 
         <section className="space-y-3">
-          <div className="space-y-2">
-            <div className="h-px bg-stitch-primary/10" />
-            <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-              05. VERIFY BEFORE DEPARTURE
-            </p>
-          </div>
-          <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            All friction guidance is based on publicly available information.
-            Always verify transport, ticketing, and entry requirements through
-            official sources before matchday.
-          </p>
           <a
-            href="https://www.fifa.com/"
+            href={shuttleLink}
             target="_blank"
             rel="noopener noreferrer"
             className="flex w-full items-center justify-between gap-2 bg-stitch-primary px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-neutral"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            <span>OFFICIAL FIFA INFO</span>
+            <span>{t("verify_shuttle")}</span>
             <span aria-hidden>→</span>
           </a>
-          <a
-            href={officialCityLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="flex w-full items-center justify-between gap-2 border border-stitch-primary bg-transparent px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary"
             style={{ borderRadius: "var(--radius-stitch-button)" }}
           >
-            <span>HOST CITY SITE</span>
-            <SearchGlobeIcon />
-          </a>
-          <a
-            href={stadiumLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-between gap-2 border border-stitch-primary bg-transparent px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary"
-            style={{ borderRadius: "var(--radius-stitch-button)" }}
-          >
-            <span>STADIUM POLICY</span>
-            <ShieldAtIcon />
-          </a>
+            <span>{t("download_maps")}</span>
+            <span aria-hidden>→</span>
+          </button>
         </section>
 
         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
           <button type="button" className="hover:text-stitch-primary">
-            Legal
+            {t("legal")}
           </button>
+          <span aria-hidden>|</span>
           <button type="button" className="hover:text-stitch-primary">
-            Source
+            {t("source")}
           </button>
+          <span aria-hidden>|</span>
           <button type="button" className="hover:text-stitch-primary">
-            Methodology
+            {t("methodology")}
           </button>
         </div>
       </div>
-
     </>
   );
 }

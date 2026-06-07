@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { FrictionLevel } from "../types/city.ts";
 import { frictionLevelColor } from "../lib/stitch.ts";
 
@@ -14,6 +15,7 @@ export default function TransportOptionCard({
   warning,
   action,
 }: TransportOptionCardProps) {
+  const { t } = useTranslation();
   const accent = frictionLevelColor(frictionLevel);
 
   return (
@@ -29,7 +31,7 @@ export default function TransportOptionCard({
           className="font-stitch-label text-[10px] font-bold uppercase"
           style={{ color: accent }}
         >
-          {frictionLevel}
+          {t(frictionLevel)}
         </span>
       </div>
       <p className="mt-3 font-stitch-body text-sm leading-relaxed text-stitch-primary/90">

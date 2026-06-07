@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   readSelectedCities,
@@ -13,30 +14,30 @@ import type {
 } from "../types/tripAnswers.ts";
 
 const HOST_CITIES = [
-  { id: "new-york-nj", label: "NEW YORK/NJ" },
-  { id: "mexico-city", label: "MEXICO CITY" },
-  { id: "toronto", label: "TORONTO" },
-  { id: "los-angeles", label: "LOS ANGELES" },
-  { id: "dallas", label: "DALLAS" },
-  { id: "miami", label: "MIAMI" },
-  { id: "vancouver", label: "VANCOUVER" },
-  { id: "atlanta", label: "ATLANTA" },
-  { id: "boston", label: "BOSTON" },
-  { id: "houston", label: "HOUSTON" },
-  { id: "kansas-city", label: "KANSAS CITY" },
-  { id: "seattle", label: "SEATTLE" },
-  { id: "philadelphia", label: "PHILADELPHIA" },
+  { id: "dallas", label: "Dallas", progressLabel: "DALLAS" },
+  { id: "boston", label: "Boston", progressLabel: "BOSTON" },
+  { id: "miami", label: "Miami", progressLabel: "MIAMI" },
+  { id: "nyc", label: "New York/NJ", progressLabel: "NEW YORK/NJ" },
+  { id: "kansascity", label: "Kansas City", progressLabel: "KANSAS CITY" },
+  { id: "atlanta", label: "Atlanta", progressLabel: "ATLANTA" },
+  { id: "houston", label: "Houston", progressLabel: "HOUSTON" },
+  { id: "losangeles", label: "Los Angeles", progressLabel: "LOS ANGELES" },
+  { id: "seattle", label: "Seattle", progressLabel: "SEATTLE" },
+  { id: "philadelphia", label: "Philadelphia", progressLabel: "PHILADELPHIA" },
 ] as const;
 
 const CITY_ID_FROM_FRICTION_INDEX: Record<string, string> = {
-  nyc: "new-york-nj",
-  losangeles: "los-angeles",
+  "new-york-nj": "nyc",
+  "los-angeles": "losangeles",
+  "kansas-city": "kansascity",
+  nyc: "nyc",
+  losangeles: "losangeles",
   dallas: "dallas",
   miami: "miami",
   atlanta: "atlanta",
   boston: "boston",
   houston: "houston",
-  kansascity: "kansas-city",
+  kansascity: "kansascity",
   seattle: "seattle",
   philadelphia: "philadelphia",
 };
@@ -51,19 +52,56 @@ const STAY_OPTIONS: StayLocation[] = [
 ];
 
 const STADIUM_TRANSIT_OPTIONS: StadiumTransit[] = [
-  "Public transit (train/bus)",
-  "Rideshare (Uber/Lyft)",
+  "Public transit",
+  "Rideshare",
   "Official shuttle",
-  "Driving / personal vehicle",
+  "Driving",
   "Private transfer",
   "Not sure yet",
 ];
+
+const STAY_OPTION_KEYS: Record<StayLocation, string> = {
+  "Near stadium": "near_stadium",
+  "City center / downtown": "city_center",
+  "Near airport": "near_airport",
+  "Suburb / outside city": "suburb",
+  "Not booked yet": "not_booked",
+  "Not sure": "not_sure",
+};
+
+const STADIUM_TRANSIT_OPTION_KEYS: Record<StadiumTransit, string> = {
+  "Public transit": "public_transit",
+  Rideshare: "rideshare",
+  "Official shuttle": "official_shuttle",
+  Driving: "driving",
+  "Private transfer": "private_transfer",
+  "Not sure yet": "not_sure_yet",
+};
 
 const DEFAULT_CITY_DETAILS: CityLogistics = {
   stayLocation: "Not booked yet",
   stadiumTransit: "Not sure yet",
   localConfidence: "low",
 };
+
+type Step = 1 | 2 | 3;
+
+function normalizeCityLogistics(details: CityLogistics): CityLogistics {
+  const legacyTransit = details.stadiumTransit as string;
+  const stadiumTransit =
+    legacyTransit === "Public transit (train/bus)"
+      ? "Public transit"
+      : legacyTransit === "Rideshare (Uber/Lyft)"
+        ? "Rideshare"
+        : legacyTransit === "Driving / personal vehicle"
+          ? "Driving"
+          : details.stadiumTransit;
+
+  return {
+    ...details,
+    stadiumTransit: stadiumTransit as StadiumTransit,
+  };
+}
 
 function mapFrictionIndexIds(ids: string[]): string[] {
   const mapped = ids
@@ -80,27 +118,28 @@ function cityLabel(cityId: string): string {
   return HOST_CITIES.find((city) => city.id === cityId)?.label ?? cityId;
 }
 
+function cityProgressLabel(cityId: string): string {
+  return HOST_CITIES.find((city) => city.id === cityId)?.progressLabel ?? cityId;
+}
+
 function createInitialCityDetails(
   savedAnswers: TripAnswers | null,
 ): Record<string, CityLogistics> {
   const details: Record<string, CityLogistics> = {};
 
   for (const cityId of HOST_CITIES.map((city) => city.id)) {
-    details[cityId] = {
+    const legacyId =
+      Object.entries(CITY_ID_FROM_FRICTION_INDEX).find(
+        ([sourceId, mappedId]) => sourceId !== mappedId && mappedId === cityId,
+      )?.[0] ?? cityId;
+    details[cityId] = normalizeCityLogistics({
       ...DEFAULT_CITY_DETAILS,
       ...savedAnswers?.cityDetails?.[cityId],
-    };
+      ...savedAnswers?.cityDetails?.[legacyId],
+    });
   }
 
   return details;
-}
-
-function StepBadge({ step }: { step: string }) {
-  return (
-    <span className="inline-block bg-stitch-primary px-2 py-1 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral">
-      {step}
-    </span>
-  );
 }
 
 function SelectField({
@@ -113,7 +152,7 @@ function SelectField({
   id: string;
   label: string;
   value: string;
-  options: string[];
+  options: { value: string; label: string }[];
   onChange: (value: string) => void;
 }) {
   return (
@@ -133,8 +172,8 @@ function SelectField({
           style={{ borderRadius: "var(--radius-stitch-button)" }}
         >
           {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
         </select>
@@ -149,10 +188,61 @@ function SelectField({
   );
 }
 
+function ProgressHeader({ step }: { step: Step }) {
+  const { t } = useTranslation();
+
+  return (
+    <div className="space-y-3">
+      <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+        {t("step")} {step} {t("of")} 3
+      </p>
+      <div className="h-1.5 overflow-hidden rounded-full bg-stitch-primary/10">
+        <div
+          className="h-full rounded-full bg-stitch-primary transition-all duration-200 ease-out"
+          style={{ width: `${(step / 3) * 100}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function CheckboxRow({
+  question,
+  subtext,
+  checked,
+  onChange,
+}: {
+  question: string;
+  subtext: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <label className="flex w-full cursor-pointer items-center justify-between gap-4 border border-stitch-primary/10 bg-stitch-neutral p-5">
+      <div>
+        <p className="font-stitch-headline text-lg font-semibold text-stitch-primary">
+          {question}
+        </p>
+        <p className="mt-1 font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
+          {subtext}
+        </p>
+      </div>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(event) => onChange(event.target.checked)}
+        className="h-5 w-5 shrink-0 accent-stitch-primary"
+      />
+    </label>
+  );
+}
+
 export default function BriefPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const savedAnswers = useMemo(() => readTripAnswers(), []);
   const isEditing = Boolean(savedAnswers);
+  const [step, setStep] = useState<Step>(1);
   const [hostCities, setHostCities] = useState<string[]>(() =>
     savedAnswers?.hostCities?.length
       ? mapFrictionIndexIds(savedAnswers.hostCities)
@@ -198,10 +288,6 @@ export default function BriefPage() {
     });
   };
 
-  const removeHostCity = (cityId: string) => {
-    setHostCities((prev) => prev.filter((id) => id !== cityId));
-  };
-
   const updateCityDetail = <Key extends keyof CityLogistics>(
     cityId: string,
     key: Key,
@@ -216,9 +302,45 @@ export default function BriefPage() {
     }));
   };
 
+  const goBack = () => {
+    if (step === 1) return;
+    if (step === 2) {
+      if (activeCityIndex > 0) {
+        setActiveCityIndex((index) => index - 1);
+        return;
+      }
+      setStep(1);
+      return;
+    }
+    setStep(2);
+    setActiveCityIndex(Math.max(hostCities.length - 1, 0));
+  };
+
+  const goNext = () => {
+    if (step === 1) {
+      if (hostCities.length === 0) {
+        setHasCitySelectionError(true);
+        return;
+      }
+      setHasCitySelectionError(false);
+      setActiveCityIndex(0);
+      setStep(2);
+      return;
+    }
+
+    if (step === 2) {
+      if (activeCityIndex < hostCities.length - 1) {
+        setActiveCityIndex((index) => index + 1);
+        return;
+      }
+      setStep(3);
+    }
+  };
+
   const handleGenerate = () => {
     if (hostCities.length === 0) {
       setHasCitySelectionError(true);
+      setStep(1);
       return;
     }
 
@@ -243,271 +365,253 @@ export default function BriefPage() {
     navigate("/my-brief");
   };
 
+  const nextButtonLabel =
+    step === 2 && activeCityIndex < hostCities.length - 1
+      ? t("next_city")
+      : t("continue");
+  const stayOptions = STAY_OPTIONS.map((option) => ({
+    value: option,
+    label: t(STAY_OPTION_KEYS[option]),
+  }));
+  const stadiumTransitOptions = STADIUM_TRANSIT_OPTIONS.map((option) => ({
+    value: option,
+    label: t(STADIUM_TRANSIT_OPTION_KEYS[option]),
+  }));
+  const activeStepKey = `${step}-${activeCityId ?? "cities"}-${activeCityIndex}`;
+
   return (
     <>
-      <div className="-mx-4 space-y-10 px-4 pb-28">
+      <div className="-mx-4 flex max-h-[calc(100vh-9rem)] flex-col px-4 pb-36">
         <header>
           <h1 className="font-stitch-headline text-3xl font-semibold text-stitch-primary">
-            Build your readiness brief
+            {t("brief_title")}
           </h1>
           <p className="mt-3 font-stitch-body text-sm leading-relaxed text-stitch-primary/80">
-            Tell us the parts of your trip that affect matchday friction.
+            {t("brief_subtitle")}
           </p>
         </header>
 
-        {/* Step 01 */}
-        <section
-          className={
-            hasCitySelectionError
-              ? "space-y-4 border border-stitch-danger p-4"
-              : "space-y-4"
-          }
-        >
-          <StepBadge step="STEP 01" />
-          <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
-            Select your host cities
-          </h2>
-          {hostCities.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {hostCities.map((cityId) => (
-                <button
-                  key={cityId}
-                  type="button"
-                  onClick={() => removeHostCity(cityId)}
-                  className="border border-stitch-primary bg-stitch-primary px-3 py-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
-                  style={{ borderRadius: "var(--radius-stitch-button)" }}
-                  aria-label={`Remove ${cityLabel(cityId)}`}
-                >
-                  {cityLabel(cityId)} ×
-                </button>
-              ))}
-            </div>
-          )}
-          <div className="grid grid-cols-2 gap-2">
-            {HOST_CITIES.map((city) => {
-              const selected = hostCities.includes(city.id);
-              return (
-                <button
-                  key={city.id}
-                  type="button"
-                  onClick={() => toggleHostCity(city.id)}
-                  className={
-                    selected
-                      ? "border border-stitch-primary bg-stitch-primary px-2 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
-                      : "border border-stitch-primary/10 bg-stitch-neutral px-2 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
-                  }
-                  style={{ borderRadius: "var(--radius-stitch-button)" }}
-                  aria-pressed={selected}
-                >
-                  {city.label}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-        {hasCitySelectionError && (
-          <p className="-mt-8 font-stitch-body text-sm leading-relaxed text-stitch-danger">
-            Select at least one host city before generating your brief.
-          </p>
-        )}
+        <div className="mt-8 shrink-0">
+          <ProgressHeader step={step} />
+        </div>
 
-        {/* Step 02 */}
-        <section className="space-y-4">
-          <StepBadge step="STEP 02" />
-          <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
-            Logistical Detail
-          </h2>
-
-          {activeCityId ? (
-            <div className="space-y-4 border border-stitch-primary/10 bg-stitch-neutral p-5">
-              <div className="space-y-1">
-                <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-secondary">
-                  CITY {activeCityIndex + 1} OF {hostCities.length} —{" "}
-                  {cityLabel(activeCityId)}
-                </p>
-                <h3 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
-                  {cityLabel(activeCityId)}
-                </h3>
-              </div>
-
-              <SelectField
-                id={`stay-${activeCityId}`}
-                label="Where are you staying?"
-                value={activeCityDetails.stayLocation}
-                options={STAY_OPTIONS}
-                onChange={(value) =>
-                  updateCityDetail(
-                    activeCityId,
-                    "stayLocation",
-                    value as StayLocation,
-                  )
-                }
-              />
-
-              <SelectField
-                id={`transit-${activeCityId}`}
-                label="How are you getting to the stadium?"
-                value={activeCityDetails.stadiumTransit}
-                options={STADIUM_TRANSIT_OPTIONS}
-                onChange={(value) =>
-                  updateCityDetail(
-                    activeCityId,
-                    "stadiumTransit",
-                    value as StadiumTransit,
-                  )
-                }
-              />
-
-              <div className="space-y-2">
-                <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
-                  How confident is your plan?
-                </p>
-                <div className="flex">
-                  {(["low", "med", "high"] as const).map((level) => {
-                    const active = activeCityDetails.localConfidence === level;
+        <div className="mt-6 min-h-0 flex-1 overflow-y-auto pb-4">
+          <div
+            key={activeStepKey}
+            className="space-y-5 transition-all duration-200 ease-out animate-[briefStepIn_180ms_ease-out]"
+          >
+            {step === 1 && (
+              <section className="space-y-5">
+                <div>
+                  <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
+                    {t("step1_title")}
+                  </h2>
+                  <p className="mt-2 font-stitch-body text-sm text-stitch-primary/70">
+                    {t("step1_subtitle")}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {HOST_CITIES.map((city) => {
+                    const selected = hostCities.includes(city.id);
                     return (
                       <button
-                        key={level}
+                        key={city.id}
                         type="button"
-                        onClick={() =>
-                          updateCityDetail(activeCityId, "localConfidence", level)
-                        }
+                        onClick={() => toggleHostCity(city.id)}
                         className={
-                          active
-                            ? level === "low"
-                              ? "flex-1 border border-stitch-danger bg-stitch-danger py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
-                              : "flex-1 border border-stitch-primary bg-stitch-primary py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
-                            : "flex-1 border border-stitch-primary/10 bg-stitch-neutral py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
+                          selected
+                            ? "border border-stitch-primary bg-stitch-primary px-2 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
+                            : "border border-stitch-primary/10 bg-stitch-neutral px-2 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
                         }
-                        aria-pressed={active}
+                        style={{ borderRadius: "var(--radius-stitch-button)" }}
+                        aria-pressed={selected}
                       >
-                        {level}
+                        {city.label}
                       </button>
                     );
                   })}
                 </div>
-              </div>
+                {hasCitySelectionError && (
+                  <p className="font-stitch-body text-sm leading-relaxed text-stitch-danger">
+                    {t("select_at_least_one")}
+                  </p>
+                )}
+              </section>
+            )}
 
-              {hostCities.length > 1 && (
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveCityIndex((index) => Math.max(index - 1, 0))
-                    }
-                    disabled={activeCityIndex === 0}
-                    className="border border-stitch-primary bg-transparent px-3 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary disabled:opacity-40"
-                    style={{ borderRadius: "var(--radius-stitch-button)" }}
-                  >
-                    Previous city
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveCityIndex((index) =>
-                        Math.min(index + 1, hostCities.length - 1),
+            {step === 2 && activeCityId && (
+              <section className="space-y-5">
+                <div>
+                  <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
+                    {t("step2_title")}
+                  </h2>
+                  {hostCities.length > 1 && (
+                    <p className="mt-2 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-secondary">
+                      {cityProgressLabel(activeCityId)} —{" "}
+                      {t("city_progress", {
+                        current: activeCityIndex + 1,
+                        total: hostCities.length,
+                      })}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-5 border border-stitch-primary/10 bg-stitch-neutral p-5">
+                  <h3 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
+                    {cityLabel(activeCityId)}
+                  </h3>
+
+                  <SelectField
+                    id={`stay-${activeCityId}`}
+                    label={t("where_staying")}
+                    value={activeCityDetails.stayLocation}
+                    options={stayOptions}
+                    onChange={(value) =>
+                      updateCityDetail(
+                        activeCityId,
+                        "stayLocation",
+                        value as StayLocation,
                       )
                     }
-                    disabled={activeCityIndex === hostCities.length - 1}
-                    className="border border-stitch-primary bg-transparent px-3 py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary disabled:opacity-40"
-                    style={{ borderRadius: "var(--radius-stitch-button)" }}
-                  >
-                    Next city
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <p className="font-stitch-body text-sm leading-relaxed text-stitch-primary/70">
-              Select a host city in Step 01 to add logistical details.
-            </p>
-          )}
-        </section>
+                  />
 
-        {/* Step 03 */}
-        <section className="space-y-4">
-          <StepBadge step="STEP 03" />
-          <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
-            Global Friction Factors
-          </h2>
-          <div className="divide-y divide-stitch-primary/10 border border-stitch-primary/10">
-            {[
-              {
-                id: "abroad",
-                question: "Visiting from another country?",
-                subtext: "VISA & CUSTOMS IMPLICATIONS",
-                checked: visitingFromAbroad,
-                onChange: setVisitingFromAbroad,
-              },
-              {
-                id: "borders",
-                question: "Crossing borders during the tournament?",
-                subtext: "US / CANADA / MEXICO TRANSIT",
-                checked: crossingBorders,
-                onChange: setCrossingBorders,
-              },
-              {
-                id: "driving",
-                question: "Will you be driving a personal/rental vehicle?",
-                subtext: "PARKING & TRAFFIC CONGESTION",
-                checked: drivingVehicle,
-                onChange: setDrivingVehicle,
-              },
-            ].map((row) => (
-              <label
-                key={row.id}
-                className="flex cursor-pointer items-center justify-between gap-4 bg-stitch-neutral p-5"
-              >
-                <div>
-                  <p className="font-stitch-headline text-lg font-semibold text-stitch-primary">
-                    {row.question}
-                  </p>
-                  <p className="mt-1 font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
-                    {row.subtext}
-                  </p>
+                  <SelectField
+                    id={`transit-${activeCityId}`}
+                    label={t("how_getting")}
+                    value={activeCityDetails.stadiumTransit}
+                    options={stadiumTransitOptions}
+                    onChange={(value) =>
+                      updateCityDetail(
+                        activeCityId,
+                        "stadiumTransit",
+                        value as StadiumTransit,
+                      )
+                    }
+                  />
+
+                  <div className="space-y-2">
+                    <p className="font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary">
+                      {t("how_confident")}
+                    </p>
+                    <div className="flex">
+                      {(["low", "med", "high"] as const).map((level) => {
+                        const active =
+                          activeCityDetails.localConfidence === level;
+                        return (
+                          <button
+                            key={level}
+                            type="button"
+                            onClick={() =>
+                              updateCityDetail(
+                                activeCityId,
+                                "localConfidence",
+                                level,
+                              )
+                            }
+                            className={
+                              active
+                                ? "flex-1 border border-stitch-primary bg-stitch-primary py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-neutral"
+                                : "flex-1 border border-stitch-primary/10 bg-stitch-neutral py-3 font-stitch-label text-[10px] font-bold uppercase tracking-wide text-stitch-primary"
+                            }
+                            aria-pressed={active}
+                          >
+                            {t(level)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-                <input
-                  type="checkbox"
-                  checked={row.checked}
-                  onChange={(e) => row.onChange(e.target.checked)}
-                  className="h-5 w-5 shrink-0 accent-stitch-primary"
-                />
-              </label>
-            ))}
+              </section>
+            )}
+
+            {step === 3 && (
+              <section className="space-y-5">
+                <h2 className="font-stitch-headline text-2xl font-semibold text-stitch-primary">
+                  {t("step3_title")}
+                </h2>
+                <div className="space-y-3">
+                  <CheckboxRow
+                    question={t("visiting_another_country")}
+                    subtext={t("visa_customs")}
+                    checked={visitingFromAbroad}
+                    onChange={setVisitingFromAbroad}
+                  />
+                  <CheckboxRow
+                    question={t("crossing_borders")}
+                    subtext={t("us_canada_mexico")}
+                    checked={crossingBorders}
+                    onChange={setCrossingBorders}
+                  />
+                  <CheckboxRow
+                    question={t("driving_vehicle")}
+                    subtext={t("parking_traffic")}
+                    checked={drivingVehicle}
+                    onChange={setDrivingVehicle}
+                  />
+                </div>
+              </section>
+            )}
           </div>
-        </section>
-
-        <div className="space-y-3">
-          <button
-            type="button"
-            onClick={handleGenerate}
-            className="w-full bg-stitch-primary px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-neutral"
-            style={{ borderRadius: "var(--radius-stitch-button)" }}
-          >
-            {isEditing
-              ? "UPDATE MY READINESS BRIEF"
-              : "GENERATE MY READINESS BRIEF"}
-          </button>
-          <p className="text-center font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
-            ANALYSIS ENGINE V4.0.0 READY FOR DEPLOYMENT
-          </p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
-          <button type="button" className="hover:text-stitch-primary">
-            LEGAL DISCLAIMER
-          </button>
-          <span aria-hidden>|</span>
-          <button type="button" className="hover:text-stitch-primary">
-            SOURCE CREDITS
-          </button>
-          <span aria-hidden>|</span>
-          <button type="button" className="hover:text-stitch-primary">
-            METHODOLOGY
-          </button>
         </div>
       </div>
 
+      <div className="fixed inset-x-0 z-40 border-t border-stitch-primary/10 bg-stitch-neutral px-4 py-3" style={{ bottom: "calc(4.25rem + env(safe-area-inset-bottom))" }}>
+        <div className="mx-auto max-w-5xl space-y-3">
+          {step === 3 ? (
+            <>
+              <button
+                type="button"
+                onClick={goBack}
+                className="w-full border border-stitch-primary bg-transparent px-4 py-3 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary"
+                style={{ borderRadius: "var(--radius-stitch-button)" }}
+              >
+                {t("back")}
+              </button>
+              <button
+                type="button"
+                onClick={handleGenerate}
+                className="w-full bg-stitch-primary px-4 py-4 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-neutral"
+                style={{ borderRadius: "var(--radius-stitch-button)" }}
+              >
+                {isEditing
+                  ? t("update_brief")
+                  : t("generate_brief")}
+              </button>
+              <p className="text-center font-stitch-label text-[9px] uppercase tracking-wide text-stitch-primary/60">
+                {t("analysis_engine")}
+              </p>
+            </>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={goBack}
+                disabled={step === 1}
+                className="border border-stitch-primary bg-transparent px-4 py-3 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-primary disabled:opacity-40"
+                style={{ borderRadius: "var(--radius-stitch-button)" }}
+              >
+                {t("back")}
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                className="bg-stitch-primary px-4 py-3 font-stitch-label text-xs font-bold uppercase tracking-wide text-stitch-neutral"
+                style={{ borderRadius: "var(--radius-stitch-button)" }}
+              >
+                {nextButtonLabel}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <style>
+        {`@keyframes briefStepIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }`}
+      </style>
     </>
   );
 }
