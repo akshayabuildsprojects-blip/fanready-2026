@@ -45,7 +45,7 @@ export default function CityFrictionCard({
       <Link to={`/cities/${city.id}`} className="block hover:opacity-95">
         <div className="relative">
           <img
-            src="/cityscape.jpg"
+            src={(city as { image?: string }).image ?? "/cityscape.jpg"}
             alt=""
             className="h-44 w-full object-cover"
             style={{ filter: "grayscale(100%)" }}

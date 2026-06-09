@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { readTripAnswers } from "../lib/tripAnswers.ts";
 
 type TabId = "home" | "cities" | "brief";
 
@@ -61,6 +62,10 @@ export default function BottomTabNav() {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const active = activeTabFromPath(pathname);
+  const tripAnswers = readTripAnswers();
+  const hasTripAnswers = Boolean(
+    tripAnswers && Object.keys(tripAnswers).length > 0,
+  );
 
   return (
     <nav
@@ -70,10 +75,14 @@ export default function BottomTabNav() {
       <div className="mx-auto flex max-w-5xl">
         {tabs.map((tab) => {
           const isActive = tab.id === active;
+          const to =
+            tab.id === "brief" && hasTripAnswers ? "/my-brief" : tab.to;
+          const label =
+            tab.id === "brief" && hasTripAnswers ? "VIEW BRIEF" : t(tab.labelKey);
           return (
             <NavLink
               key={tab.id}
-              to={tab.to}
+              to={to}
               className={`flex flex-1 flex-col items-center gap-1 px-2 py-3 font-stitch-label text-[9px] font-bold uppercase tracking-wide ${
                 isActive
                   ? "bg-stitch-primary/5 text-stitch-primary"
@@ -81,7 +90,7 @@ export default function BottomTabNav() {
               }`}
             >
               <TabIcon name={tab.icon} />
-              {t(tab.labelKey)}
+              {label}
             </NavLink>
           );
         })}
