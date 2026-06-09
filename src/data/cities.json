@@ -223,278 +223,6 @@
       }
     },
     {
-      "id": "nyc",
-      "name": "New York / New Jersey",
-      "stadium": "MetLife Stadium",
-      "frictionIndex": 7.8,
-      "primaryFriction": "Cross-region movement",
-      "distanceMiles": 8,
-      "infographicCaption": "NYC core to New Jersey stadium",
-      "downtownCode": "NYC",
-      "stadiumCode": "MET",
-      "advisory": "Plan the stadium transfer as a regional movement, not a quick city hop.",
-      "stadiumReality": "MetLife Stadium is in East Rutherford, New Jersey. Travelers staying in Manhattan cross a state line to reach the venue.",
-      "heatRisk": "medium",
-      "heatCopy": "New York in June and July can be hot and humid. Heat is a moderate factor, particularly for post-match outdoor waits.",
-      "transitType": "rail-first",
-      "drivingRisk": "high",
-      "matchDays": ["2026-06-15", "2026-06-22", "2026-07-04"],
-      "transportOptions": [
-        {
-          "mode": "NJ Transit train",
-          "frictionLevel": "medium",
-          "warning": "Special matchday service will run. Expect very high volume.",
-          "action": "Check NJ Transit matchday schedule. Arrive at Penn Station early."
-        },
-        {
-          "mode": "Rideshare",
-          "frictionLevel": "high",
-          "warning": "Cross-state rideshare adds cost. Post-match surge likely.",
-          "action": "NJ Transit is the recommended option over rideshare."
-        },
-        {
-          "mode": "Driving",
-          "frictionLevel": "high",
-          "warning": "Driving into the NYC area on matchday is not recommended.",
-          "action": "Use rail. Do not drive unless staying in New Jersey."
-        }
-      ],
-      "hotelZones": [
-        {
-          "zone": "Midtown Manhattan",
-          "pros": "Best NYC experience, central location",
-          "risks": "NJ Transit transfer required, Penn Station crowds",
-          "action": "Use NJ Transit. Allow extra time for Penn Station on matchday."
-        },
-        {
-          "zone": "East Rutherford / NJ near stadium",
-          "pros": "Minimal matchday friction",
-          "risks": "Limited NYC experience",
-          "action": "Good option if you prioritize matchday logistics."
-        },
-        {
-          "zone": "Newark, NJ",
-          "pros": "Good transit options, airport access",
-          "risks": "Less tourist infrastructure than Manhattan",
-          "action": "NJ Transit connects to stadium. Reasonable option."
-        }
-      ],
-      "dynamicFields": {
-        "shuttleLink": null,
-        "shuttleStatus": null,
-        "bagPolicy": "Check official stadium policy before matchday.",
-        "bagPolicyLink": null,
-        "transportLink": null,
-        "officialCityLink": null,
-        "lastUpdated": "2026-05-29",
-        "alerts": []
-      }
-    },
-    {
-      "id": "kansascity",
-      "name": "Kansas City",
-      "stadium": "Arrowhead Stadium",
-      "frictionIndex": 8.0,
-      "primaryFriction": "Limited transit assumptions",
-      "distanceMiles": 9,
-      "infographicCaption": "Shuttle planning likely required",
-      "downtownCode": "MKC",
-      "stadiumCode": "ARW",
-      "advisory": "Do not assume standard city transit will solve matchday movement.",
-      "stadiumReality": "Arrowhead Stadium is southeast of downtown Kansas City. The city has limited public transit infrastructure and matchday movement is largely shuttle or car dependent.",
-      "heatRisk": "high",
-      "heatCopy": "Kansas City in June and July averages 30–33°C. Heat is a moderate-to-high factor for outdoor queues.",
-      "transitType": "shuttle-first",
-      "drivingRisk": "medium",
-      "matchDays": ["2026-06-16", "2026-06-23", "2026-06-28"],
-      "transportOptions": [
-        {
-          "mode": "Official shuttle",
-          "frictionLevel": "medium",
-          "warning": "This is the primary recommended option. Confirm before matchday.",
-          "action": "Check official host city site for shuttle details."
-        },
-        {
-          "mode": "Driving + pre-booked parking",
-          "frictionLevel": "medium",
-          "warning": "Parking available but must be pre-booked.",
-          "action": "Pre-book parking. Plan post-match traffic delays."
-        },
-        {
-          "mode": "Rideshare",
-          "frictionLevel": "high",
-          "warning": "Post-match surge likely. Limited pickup infrastructure near stadium.",
-          "action": "Have a backup plan. Do not rely solely on rideshare."
-        },
-        {
-          "mode": "City bus / public transit",
-          "frictionLevel": "high",
-          "warning": "Kansas City public transit does not reliably serve the stadium on matchday.",
-          "action": "Do not assume city bus will solve matchday movement."
-        }
-      ],
-      "hotelZones": [
-        {
-          "zone": "Downtown Kansas City",
-          "pros": "Best dining and entertainment access",
-          "risks": "Shuttle or car required to stadium",
-          "action": "Confirm shuttle plan before booking downtown."
-        },
-        {
-          "zone": "Near stadium / south KC",
-          "pros": "Minimal matchday transfer",
-          "risks": "Limited amenities outside matchdays",
-          "action": "Good if matchday logistics are priority."
-        }
-      ],
-      "dynamicFields": {
-        "shuttleLink": null,
-        "shuttleStatus": null,
-        "bagPolicy": "Check official stadium policy before matchday.",
-        "bagPolicyLink": null,
-        "transportLink": null,
-        "officialCityLink": null,
-        "lastUpdated": "2026-05-29",
-        "alerts": []
-      }
-    },
-    {
-      "id": "atlanta",
-      "name": "Atlanta",
-      "stadium": "Mercedes-Benz Stadium",
-      "frictionIndex": 7.3,
-      "primaryFriction": "MARTA crowd management",
-      "distanceMiles": 1,
-      "infographicCaption": "Stadium is downtown — MARTA crowds are the friction",
-      "downtownCode": "ATL",
-      "stadiumCode": "MBS",
-      "advisory": "MARTA connects downtown to the stadium but post-match crush requires planning.",
-      "stadiumReality": "Mercedes-Benz Stadium is in downtown Atlanta, adjacent to the MARTA rail network. This is one of the better-connected venues but post-match MARTA crush is the primary friction.",
-      "heatRisk": "high",
-      "heatCopy": "Atlanta in June and July averages 30–32°C with high humidity. Plan accordingly for outdoor queues.",
-      "transitType": "rail-first",
-      "drivingRisk": "high",
-      "matchDays": ["2026-06-15", "2026-06-20", "2026-06-27"],
-      "transportOptions": [
-        {
-          "mode": "MARTA rail",
-          "frictionLevel": "medium",
-          "warning": "MARTA is the recommended option but post-match crush is significant.",
-          "action": "Use MARTA. Plan to wait 20–30 min post-match before boarding."
-        },
-        {
-          "mode": "Rideshare",
-          "frictionLevel": "high",
-          "warning": "Post-match surge pricing. Pickup zones congested.",
-          "action": "MARTA is better. Use rideshare only if staying far from rail."
-        },
-        {
-          "mode": "Driving",
-          "frictionLevel": "high",
-          "warning": "I-285 and downtown Atlanta roads are heavily congested post-match.",
-          "action": "Avoid driving. Use MARTA."
-        }
-      ],
-      "hotelZones": [
-        {
-          "zone": "Downtown Atlanta / Midtown",
-          "pros": "Walking distance or one MARTA stop to stadium",
-          "risks": "Post-match crowds in hotel areas",
-          "action": "Best option for matchday logistics."
-        },
-        {
-          "zone": "Buckhead",
-          "pros": "Good dining and hotel options",
-          "risks": "MARTA transfer required, 20 min ride",
-          "action": "Reasonable option. Use MARTA."
-        },
-        {
-          "zone": "Airport area",
-          "pros": "Good flight connections",
-          "risks": "MARTA ride to stadium is long",
-          "action": "Only if arrival or departure timing requires it."
-        }
-      ],
-      "dynamicFields": {
-        "shuttleLink": null,
-        "shuttleStatus": null,
-        "bagPolicy": "Check official stadium policy before matchday.",
-        "bagPolicyLink": null,
-        "transportLink": null,
-        "officialCityLink": null,
-        "lastUpdated": "2026-05-29",
-        "alerts": []
-      }
-    },
-    {
-      "id": "houston",
-      "name": "Houston",
-      "stadium": "NRG Stadium",
-      "frictionIndex": 8.0,
-      "primaryFriction": "Heat + car dependency",
-      "distanceMiles": 7,
-      "infographicCaption": "Car-dependent city, heat compound risk",
-      "downtownCode": "HOU",
-      "stadiumCode": "NRG",
-      "advisory": "Houston is a car-dependent city. Plan every transfer explicitly.",
-      "stadiumReality": "NRG Stadium is south of downtown Houston. The city is heavily car-dependent and public transit options to the stadium are limited.",
-      "heatRisk": "high",
-      "heatCopy": "Houston in June and July averages 34–36°C with very high humidity. This is among the highest heat risk venues. Plan accordingly.",
-      "transitType": "shuttle-first",
-      "drivingRisk": "medium",
-      "matchDays": ["2026-06-11", "2026-06-17", "2026-06-24"],
-      "transportOptions": [
-        {
-          "mode": "Official shuttle",
-          "frictionLevel": "medium",
-          "warning": "Primary recommended option for non-drivers.",
-          "action": "Confirm shuttle booking before matchday."
-        },
-        {
-          "mode": "Driving + pre-booked parking",
-          "frictionLevel": "medium",
-          "warning": "Pre-booked parking available near NRG.",
-          "action": "Pre-book parking. Plan post-match delays."
-        },
-        {
-          "mode": "METRORail",
-          "frictionLevel": "high",
-          "warning": "METRORail does not directly serve NRG Stadium.",
-          "action": "Do not assume rail solves matchday movement."
-        },
-        {
-          "mode": "Rideshare",
-          "frictionLevel": "high",
-          "warning": "Post-match surge likely. Heat makes outdoor waiting high risk.",
-          "action": "Have indoor or shaded waiting option. Do not rely solely on rideshare."
-        }
-      ],
-      "hotelZones": [
-        {
-          "zone": "Downtown Houston",
-          "pros": "Best city amenities",
-          "risks": "Transfer required, car-dependent city",
-          "action": "Confirm shuttle or transfer plan before booking."
-        },
-        {
-          "zone": "Medical Center / NRG area",
-          "pros": "Close to stadium",
-          "risks": "Limited tourist amenities",
-          "action": "Good if matchday logistics are your priority."
-        }
-      ],
-      "dynamicFields": {
-        "shuttleLink": null,
-        "shuttleStatus": null,
-        "bagPolicy": "Check official stadium policy before matchday.",
-        "bagPolicyLink": null,
-        "transportLink": null,
-        "officialCityLink": null,
-        "lastUpdated": "2026-05-29",
-        "alerts": []
-      }
-    },
-    {
       "id": "losangeles",
       "name": "Los Angeles",
       "stadium": "SoFi Stadium",
@@ -981,6 +709,376 @@
           "pros": "Close to stadium",
           "risks": "Limited tourist amenities",
           "action": "Good if matchday logistics are your priority."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "toronto",
+      "name": "Toronto",
+      "stadium": "BMO Field",
+      "frictionIndex": 7.2,
+      "primaryFriction": "Border crossing + transit volume",
+      "distanceMiles": 2,
+      "infographicCaption": "Downtown adjacent — border crossing is the friction",
+      "downtownCode": "YYZ",
+      "stadiumCode": "BMO",
+      "advisory": "Plan border crossing documentation before travel. Stadium is accessible but international entry adds complexity.",
+      "stadiumReality": "BMO Field is close to downtown Toronto. The primary friction is US visitors crossing into Canada and navigating entry requirements.",
+      "heatRisk": "low",
+      "heatCopy": "Toronto in June and July averages 20–25°C. Heat is not a significant factor here.",
+      "transitType": "rail-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-12", "2026-06-18", "2026-06-25"],
+      "transportOptions": [
+        {
+          "mode": "TTC streetcar / transit",
+          "frictionLevel": "low",
+          "warning": "Post-match volume is high but service is frequent.",
+          "action": "Use TTC. Most reliable option from downtown."
+        },
+        {
+          "mode": "Walking",
+          "frictionLevel": "low",
+          "warning": "Many downtown hotels are within walking distance.",
+          "action": "Check if your hotel is walkable. Easiest option."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "medium",
+          "warning": "Post-match surge possible but manageable.",
+          "action": "Reasonable backup if not using transit."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Downtown Toronto parking is limited and expensive on matchday.",
+          "action": "Use transit. Do not drive to downtown Toronto on matchday."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Toronto",
+          "pros": "Walking distance or short transit to stadium",
+          "risks": "Higher hotel prices, post-match crowds",
+          "action": "Best option overall for Toronto matches."
+        },
+        {
+          "zone": "Mississauga / Airport area",
+          "pros": "Good flight connections, lower hotel prices",
+          "risks": "Transit to stadium takes longer",
+          "action": "Allow extra time. Use TTC or rideshare."
+        },
+        {
+          "zone": "Scarborough / East Toronto",
+          "pros": "More affordable hotels",
+          "risks": "Longer transit ride to stadium",
+          "action": "Use TTC subway. Allow 40+ minutes."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "vancouver",
+      "name": "Vancouver",
+      "stadium": "BC Place",
+      "frictionIndex": 6.8,
+      "primaryFriction": "Border crossing + stadium capacity",
+      "distanceMiles": 1,
+      "infographicCaption": "Downtown adjacent — border entry is the friction",
+      "downtownCode": "YVR",
+      "stadiumCode": "BCP",
+      "advisory": "BC Place is central but US visitors must plan Canadian entry requirements carefully.",
+      "stadiumReality": "BC Place is in downtown Vancouver, walking distance from most hotels. Border crossing from the US is the primary friction for American visitors.",
+      "heatRisk": "low",
+      "heatCopy": "Vancouver in June and July averages 18–22°C. Heat is not a significant factor here.",
+      "transitType": "rail-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-26"],
+      "transportOptions": [
+        {
+          "mode": "SkyTrain",
+          "frictionLevel": "low",
+          "warning": "Post-match volume is high but SkyTrain runs frequently.",
+          "action": "Use SkyTrain. Most reliable option."
+        },
+        {
+          "mode": "Walking",
+          "frictionLevel": "low",
+          "warning": "Many downtown hotels are within walking distance.",
+          "action": "Check if your hotel is walkable. Easiest option."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "medium",
+          "warning": "Post-match surge possible.",
+          "action": "Reasonable backup if not using SkyTrain."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Downtown Vancouver parking is expensive and limited.",
+          "action": "Use SkyTrain. Do not drive on matchday."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Vancouver",
+          "pros": "Walking distance to stadium, best city access",
+          "risks": "Higher hotel prices",
+          "action": "Best option overall for Vancouver matches."
+        },
+        {
+          "zone": "Burnaby / Surrey",
+          "pros": "More affordable hotels, SkyTrain access",
+          "risks": "Longer commute to stadium",
+          "action": "Use SkyTrain. Allow 30+ minutes."
+        },
+        {
+          "zone": "Richmond / Airport area",
+          "pros": "Good flight connections",
+          "risks": "SkyTrain ride to stadium is longer",
+          "action": "Use Canada Line SkyTrain. Allow 40+ minutes."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "mexicocity",
+      "name": "Mexico City",
+      "stadium": "Estadio Azteca",
+      "frictionIndex": 8.5,
+      "primaryFriction": "Altitude + transport complexity",
+      "distanceMiles": 12,
+      "infographicCaption": "High altitude city — acclimatization and transit planning required",
+      "downtownCode": "CDMX",
+      "stadiumCode": "AZT",
+      "advisory": "Altitude affects physical comfort. Plan acclimatization time and confirm transport before matchday.",
+      "stadiumReality": "Estadio Azteca is in the south of Mexico City, away from the main tourist and hotel zones. The city sits at 2,240 meters altitude which affects visitors arriving from sea level.",
+      "heatRisk": "medium",
+      "heatCopy": "Mexico City in June averages 18–23°C but the altitude means UV exposure is significantly higher than at sea level. Sun protection is important.",
+      "transitType": "rail-first",
+      "drivingRisk": "high",
+      "matchDays": ["2026-06-11", "2026-06-17", "2026-06-22"],
+      "transportOptions": [
+        {
+          "mode": "Metro Line 2",
+          "frictionLevel": "medium",
+          "warning": "Metro serves the stadium area but post-match crowds are significant.",
+          "action": "Use Metro. Plan for crowded platforms post-match."
+        },
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Rideshare (Uber/DiDi)",
+          "frictionLevel": "high",
+          "warning": "Mexico City traffic is heavy. Post-match surge and congestion expected.",
+          "action": "Have a backup plan. Do not rely solely on rideshare."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Mexico City traffic is among the most congested in North America.",
+          "action": "Avoid driving. Use Metro or official shuttle."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Polanco / Reforma",
+          "pros": "Best tourist amenities, safer area, good restaurant access",
+          "risks": "12+ miles from stadium, requires Metro or shuttle",
+          "action": "Most recommended zone for international visitors."
+        },
+        {
+          "zone": "Roma / Condesa",
+          "pros": "Vibrant neighborhood, good dining",
+          "risks": "Requires Metro transfer to stadium",
+          "action": "Good option. Plan Metro route in advance."
+        },
+        {
+          "zone": "Near Azteca / Coyoacán",
+          "pros": "Close to stadium",
+          "risks": "Less tourist infrastructure, unfamiliar for first-time visitors",
+          "action": "Only if matchday logistics are your priority."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "guadalajara",
+      "name": "Guadalajara",
+      "stadium": "Estadio Akron",
+      "frictionIndex": 7.8,
+      "primaryFriction": "Stadium distance + limited international familiarity",
+      "distanceMiles": 11,
+      "infographicCaption": "Stadium outside city — transfer planning required",
+      "downtownCode": "GDL",
+      "stadiumCode": "AKR",
+      "advisory": "Estadio Akron is outside the city center. Plan transport carefully and allow extra time.",
+      "stadiumReality": "Estadio Akron is in Zapopan, approximately 11 miles from downtown Guadalajara. International visitors may be less familiar with the city layout.",
+      "heatRisk": "medium",
+      "heatCopy": "Guadalajara in June averages 25–30°C with some humidity. Heat is a moderate factor for outdoor queues.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-14", "2026-06-19", "2026-06-24"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Primary recommended option. Confirm before matchday.",
+          "action": "Check official host city site for shuttle details."
+        },
+        {
+          "mode": "Rideshare (Uber/DiDi)",
+          "frictionLevel": "medium",
+          "warning": "Post-match surge possible. Allow extra time.",
+          "action": "Reasonable option. Have a backup plan."
+        },
+        {
+          "mode": "Light rail (Tren Ligero)",
+          "frictionLevel": "medium",
+          "warning": "Light rail serves parts of the city but check matchday service to stadium.",
+          "action": "Confirm route to stadium before matchday."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Post-match traffic near Zapopan can be significant.",
+          "action": "Pre-book parking. Plan post-match delays."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Downtown Guadalajara / Historic Center",
+          "pros": "Best city experience, cultural attractions",
+          "risks": "11 miles from stadium, requires shuttle or rideshare",
+          "action": "Confirm transport plan before booking downtown."
+        },
+        {
+          "zone": "Zapopan / near stadium",
+          "pros": "Close to stadium, modern area",
+          "risks": "Less tourist infrastructure than downtown",
+          "action": "Good if matchday logistics are your priority."
+        },
+        {
+          "zone": "Tlaquepaque",
+          "pros": "Charming area, good dining",
+          "risks": "Further from stadium, requires transfer",
+          "action": "Plan transport carefully from this zone."
+        }
+      ],
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-05-29",
+        "alerts": []
+      }
+    },
+    {
+      "id": "monterrey",
+      "name": "Monterrey",
+      "stadium": "Estadio BBVA",
+      "frictionIndex": 8.2,
+      "primaryFriction": "Extreme heat + stadium distance",
+      "distanceMiles": 14,
+      "infographicCaption": "Hot city, stadium outside center — heat and transport compound",
+      "downtownCode": "MTY",
+      "stadiumCode": "BBV",
+      "advisory": "Monterrey summer heat is extreme. Plan every aspect of matchday around heat management.",
+      "stadiumReality": "Estadio BBVA is in Guadalupe, approximately 14 miles from downtown Monterrey. Combined with extreme summer heat, matchday planning is critical.",
+      "heatRisk": "high",
+      "heatCopy": "Monterrey in June averages 35–40°C with high humidity. This is among the most extreme heat conditions of any host city. Hydration, sun protection, and shaded waiting are essential.",
+      "transitType": "shuttle-first",
+      "drivingRisk": "medium",
+      "matchDays": ["2026-06-15", "2026-06-21", "2026-06-27"],
+      "transportOptions": [
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Primary recommended option especially given the heat.",
+          "action": "Confirm shuttle booking before matchday. Air-conditioned option preferred."
+        },
+        {
+          "mode": "Rideshare (Uber/DiDi)",
+          "frictionLevel": "high",
+          "warning": "Post-match surge likely. Heat makes outdoor waiting dangerous.",
+          "action": "Have indoor or air-conditioned waiting option. Do not wait outside."
+        },
+        {
+          "mode": "Metro",
+          "frictionLevel": "high",
+          "warning": "Monterrey Metro does not directly serve the stadium.",
+          "action": "Do not assume Metro solves matchday movement."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Post-match traffic combined with extreme heat is a serious risk.",
+          "action": "Pre-book parking. Ensure air conditioning is working in vehicle."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "San Pedro Garza García",
+          "pros": "Safest and most modern area, good amenities",
+          "risks": "Requires transfer to stadium",
+          "action": "Most recommended zone for international visitors."
+        },
+        {
+          "zone": "Downtown Monterrey / Barrio Antiguo",
+          "pros": "Cultural attractions, historic area",
+          "risks": "Requires transfer, heat is more intense downtown",
+          "action": "Plan indoor rest time between hotel and matchday."
+        },
+        {
+          "zone": "Near stadium / Guadalupe",
+          "pros": "Close to stadium",
+          "risks": "Limited tourist amenities, extreme heat outside",
+          "action": "Only if matchday logistics are priority. Ensure air conditioning."
         }
       ],
       "dynamicFields": {
