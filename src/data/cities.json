@@ -17,7 +17,11 @@
       "heatCopy": "June and July temperatures in Dallas regularly exceed 35–38°C. Plan hydration, sunscreen, shaded waiting time, and post-match exit delays.",
       "transitType": "shuttle-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-12", "2026-06-18", "2026-06-22"],
+      "matchDays": [
+        "2026-06-12",
+        "2026-06-18",
+        "2026-06-22"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -79,6 +83,138 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "dal-1",
+          "stage": "Group F",
+          "date": "2026-06-14",
+          "time": "15:00",
+          "timezone": "CDT",
+          "home": "Netherlands",
+          "away": "Japan",
+          "confirmed": true
+        },
+        {
+          "id": "dal-2",
+          "stage": "Group L",
+          "date": "2026-06-17",
+          "time": "15:00",
+          "timezone": "CDT",
+          "home": "England",
+          "away": "Croatia",
+          "confirmed": true
+        },
+        {
+          "id": "dal-3",
+          "stage": "Group J",
+          "date": "2026-06-22",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "Argentina",
+          "away": "Austria",
+          "confirmed": true
+        },
+        {
+          "id": "dal-4",
+          "stage": "Group F",
+          "date": "2026-06-25",
+          "time": "18:00",
+          "timezone": "CDT",
+          "home": "Japan",
+          "away": "Sweden",
+          "confirmed": true
+        },
+        {
+          "id": "dal-5",
+          "stage": "Group J",
+          "date": "2026-06-27",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Jordan",
+          "away": "Argentina",
+          "confirmed": true
+        },
+        {
+          "id": "dal-6",
+          "stage": "Round of 32",
+          "date": "2026-06-30",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "dal-7",
+          "stage": "Round of 32",
+          "date": "2026-07-03",
+          "time": "13:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "dal-8",
+          "stage": "Round of 16",
+          "date": "2026-07-06",
+          "time": "14:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "dal-9",
+          "stage": "Semi-final",
+          "date": "2026-07-14",
+          "time": "14:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -98,7 +234,11 @@
       "heatCopy": "Boston summer temperatures are generally mild. Heat is a lower risk here than other host cities.",
       "transitType": "rail-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-25"],
+      "matchDays": [
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-25"
+      ],
       "transportOptions": [
         {
           "mode": "Commuter rail (MBTA)",
@@ -148,6 +288,118 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "bos-1",
+          "stage": "Group C",
+          "date": "2026-06-13",
+          "time": "21:00",
+          "timezone": "EDT",
+          "home": "Haiti",
+          "away": "Scotland",
+          "confirmed": true
+        },
+        {
+          "id": "bos-2",
+          "stage": "Group I",
+          "date": "2026-06-16",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Iraq",
+          "away": "Norway",
+          "confirmed": true
+        },
+        {
+          "id": "bos-3",
+          "stage": "Group C",
+          "date": "2026-06-19",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Scotland",
+          "away": "Morocco",
+          "confirmed": true
+        },
+        {
+          "id": "bos-4",
+          "stage": "Group L",
+          "date": "2026-06-23",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "England",
+          "away": "Ghana",
+          "confirmed": true
+        },
+        {
+          "id": "bos-5",
+          "stage": "Group I",
+          "date": "2026-06-26",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "Norway",
+          "away": "France",
+          "confirmed": true
+        },
+        {
+          "id": "bos-6",
+          "stage": "Round of 32",
+          "date": "2026-06-29",
+          "time": "16:30",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "bos-7",
+          "stage": "Quarter-final",
+          "date": "2026-07-09",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -167,7 +419,11 @@
       "heatCopy": "Miami in June and July combines heat with high humidity. Heat index can exceed 40°C. Plan accordingly for queues, outdoor waits, and post-match exits.",
       "transitType": "rideshare-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-14", "2026-06-21", "2026-06-26"],
+      "matchDays": [
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-26"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -223,6 +479,118 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "mia-1",
+          "stage": "Group H",
+          "date": "2026-06-15",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Saudi Arabia",
+          "away": "Uruguay",
+          "confirmed": true
+        },
+        {
+          "id": "mia-2",
+          "stage": "Group H",
+          "date": "2026-06-21",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Uruguay",
+          "away": "Cape Verde",
+          "confirmed": true
+        },
+        {
+          "id": "mia-3",
+          "stage": "Group C",
+          "date": "2026-06-24",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Scotland",
+          "away": "Brazil",
+          "confirmed": true
+        },
+        {
+          "id": "mia-4",
+          "stage": "Group K",
+          "date": "2026-06-27",
+          "time": "19:30",
+          "timezone": "EDT",
+          "home": "Colombia",
+          "away": "Portugal",
+          "confirmed": true
+        },
+        {
+          "id": "mia-5",
+          "stage": "Round of 32",
+          "date": "2026-07-03",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "mia-6",
+          "stage": "Quarter-final",
+          "date": "2026-07-11",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "mia-7",
+          "stage": "Bronze medal match",
+          "date": "2026-07-18",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -242,7 +610,11 @@
       "heatCopy": "Los Angeles in June and July averages 25–28°C. Heat is a moderate factor, lower than Dallas or Miami.",
       "transitType": "shuttle-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-12", "2026-06-19", "2026-06-26"],
+      "matchDays": [
+        "2026-06-12",
+        "2026-06-19",
+        "2026-06-26"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -304,6 +676,303 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "lax-1",
+          "stage": "Group D",
+          "date": "2026-06-12",
+          "time": "18:00",
+          "timezone": "PDT",
+          "home": "USA",
+          "away": "Paraguay",
+          "confirmed": true
+        },
+        {
+          "id": "lax-2",
+          "stage": "Group G",
+          "date": "2026-06-15",
+          "time": "18:00",
+          "timezone": "PDT",
+          "home": "Iran",
+          "away": "New Zealand",
+          "confirmed": true
+        },
+        {
+          "id": "lax-3",
+          "stage": "Group B",
+          "date": "2026-06-18",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Switzerland",
+          "away": "Bosnia and Herzegovina",
+          "confirmed": true
+        },
+        {
+          "id": "lax-4",
+          "stage": "Group G",
+          "date": "2026-06-21",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Belgium",
+          "away": "Iran",
+          "confirmed": true
+        },
+        {
+          "id": "lax-5",
+          "stage": "Group D",
+          "date": "2026-06-25",
+          "time": "19:00",
+          "timezone": "PDT",
+          "home": "Türkiye",
+          "away": "USA",
+          "confirmed": true
+        },
+        {
+          "id": "lax-6",
+          "stage": "Round of 32",
+          "date": "2026-06-28",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "lax-7",
+          "stage": "Round of 32",
+          "date": "2026-07-02",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "lax-8",
+          "stage": "Quarter-final",
+          "date": "2026-07-10",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
+      }
+    },
+    {
+      "id": "sanfrancisco",
+      "name": "San Francisco Bay Area",
+      "stadium": "Levi's Stadium",
+      "frictionIndex": 7.2,
+      "primaryFriction": "Distance from SF + transit complexity",
+      "distanceMiles": 45,
+      "infographicCaption": "Stadium is in Santa Clara, not San Francisco",
+      "downtownCode": "SFO",
+      "stadiumCode": "LEV",
+      "advisory": "Levi's Stadium is in Santa Clara, 45 miles south of San Francisco. Plan transit carefully.",
+      "stadiumReality": "San Francisco Bay Area Stadium (Levi's Stadium) is in Santa Clara, not San Francisco city. Visitors staying in SF face a significant journey. VTA light rail and Caltrain with shuttle are the recommended options.",
+      "heatRisk": "low",
+      "heatCopy": "San Francisco Bay Area in June averages 18-22°C. Heat is not a significant factor here.",
+      "transitType": "rail-first",
+      "drivingRisk": "high",
+      "matches": [
+        {
+          "id": "sf-1",
+          "stage": "Group B",
+          "date": "2026-06-13",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Qatar",
+          "away": "Switzerland",
+          "confirmed": true
+        },
+        {
+          "id": "sf-2",
+          "stage": "Group J",
+          "date": "2026-06-16",
+          "time": "21:00",
+          "timezone": "PDT",
+          "home": "Austria",
+          "away": "Jordan",
+          "confirmed": true
+        },
+        {
+          "id": "sf-3",
+          "stage": "Group D",
+          "date": "2026-06-19",
+          "time": "21:00",
+          "timezone": "PDT",
+          "home": "Türkiye",
+          "away": "Paraguay",
+          "confirmed": true
+        },
+        {
+          "id": "sf-4",
+          "stage": "Group J",
+          "date": "2026-06-22",
+          "time": "20:00",
+          "timezone": "PDT",
+          "home": "Jordan",
+          "away": "Algeria",
+          "confirmed": true
+        },
+        {
+          "id": "sf-5",
+          "stage": "Group D",
+          "date": "2026-06-25",
+          "time": "19:00",
+          "timezone": "PDT",
+          "home": "Paraguay",
+          "away": "Australia",
+          "confirmed": true
+        },
+        {
+          "id": "sf-6",
+          "stage": "Round of 32",
+          "date": "2026-07-01",
+          "time": "20:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "transportOptions": [
+        {
+          "mode": "VTA light rail + Caltrain",
+          "frictionLevel": "medium",
+          "warning": "Requires transfer. Plan route in advance.",
+          "action": "Use VTA light rail from downtown San Jose or Caltrain with shuttle. Most reliable option."
+        },
+        {
+          "mode": "Rideshare",
+          "frictionLevel": "high",
+          "warning": "Post-match surge likely. Long distances from SF add significant cost.",
+          "action": "Budget for high fares. Have a backup plan."
+        },
+        {
+          "mode": "Driving",
+          "frictionLevel": "high",
+          "warning": "Highway 101 and I-880 are heavily congested on matchday.",
+          "action": "Pre-book parking. Avoid driving from San Francisco."
+        },
+        {
+          "mode": "Official shuttle",
+          "frictionLevel": "medium",
+          "warning": "Confirm booking before matchday.",
+          "action": "Check official host city site for shuttle details."
+        }
+      ],
+      "hotelZones": [
+        {
+          "zone": "Santa Clara / near stadium",
+          "pros": "Minimal matchday transfer friction",
+          "risks": "Limited tourist amenities",
+          "action": "Best option if matchday logistics are priority."
+        },
+        {
+          "zone": "Downtown San Jose",
+          "pros": "Good amenities, VTA light rail access",
+          "risks": "Transfer required to stadium",
+          "action": "Use VTA light rail. Reasonable option."
+        },
+        {
+          "zone": "San Francisco city",
+          "pros": "Best tourist experience",
+          "risks": "45 miles from stadium, significant travel time",
+          "action": "Plan transport carefully. Allow 90+ minutes."
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12 x 6 x 12 inches. No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays on Highway 101 and I-880. Plan at least 60 minutes to exit."
+      },
+      "dynamicFields": {
+        "shuttleLink": null,
+        "shuttleStatus": null,
+        "bagPolicy": "Check official stadium policy before matchday.",
+        "bagPolicyLink": null,
+        "transportLink": null,
+        "officialCityLink": null,
+        "lastUpdated": "2026-06-11",
+        "alerts": []
       }
     },
     {
@@ -323,7 +992,11 @@
       "heatCopy": "Seattle in June and July averages 20–23°C. Heat is not a significant factor here.",
       "transitType": "rail-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-27"],
+      "matchDays": [
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27"
+      ],
       "transportOptions": [
         {
           "mode": "Link Light Rail",
@@ -379,6 +1052,108 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "sea-1",
+          "stage": "Group G",
+          "date": "2026-06-15",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Belgium",
+          "away": "Egypt",
+          "confirmed": true
+        },
+        {
+          "id": "sea-2",
+          "stage": "Group D",
+          "date": "2026-06-19",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Australia",
+          "away": "USA",
+          "confirmed": true
+        },
+        {
+          "id": "sea-3",
+          "stage": "Group B",
+          "date": "2026-06-24",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Bosnia and Herzegovina",
+          "away": "Qatar",
+          "confirmed": true
+        },
+        {
+          "id": "sea-4",
+          "stage": "Group G",
+          "date": "2026-06-26",
+          "time": "20:00",
+          "timezone": "PDT",
+          "home": "Egypt",
+          "away": "Iran",
+          "confirmed": true
+        },
+        {
+          "id": "sea-5",
+          "stage": "Round of 32",
+          "date": "2026-07-01",
+          "time": "13:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "sea-6",
+          "stage": "Round of 16",
+          "date": "2026-07-06",
+          "time": "17:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -398,7 +1173,11 @@
       "heatCopy": "Philadelphia in June and July averages 27–30°C. Heat is a moderate factor for outdoor post-match waits.",
       "transitType": "rail-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-14", "2026-06-21", "2026-06-28"],
+      "matchDays": [
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28"
+      ],
       "transportOptions": [
         {
           "mode": "SEPTA Broad Street Line",
@@ -454,6 +1233,108 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "phi-1",
+          "stage": "Group E",
+          "date": "2026-06-14",
+          "time": "19:00",
+          "timezone": "EDT",
+          "home": "Côte d'Ivoire",
+          "away": "Ecuador",
+          "confirmed": true
+        },
+        {
+          "id": "phi-2",
+          "stage": "Group C",
+          "date": "2026-06-19",
+          "time": "20:30",
+          "timezone": "EDT",
+          "home": "Brazil",
+          "away": "Haiti",
+          "confirmed": true
+        },
+        {
+          "id": "phi-3",
+          "stage": "Group I",
+          "date": "2026-06-22",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "France",
+          "away": "Iraq",
+          "confirmed": true
+        },
+        {
+          "id": "phi-4",
+          "stage": "Group E",
+          "date": "2026-06-25",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "Curaçao",
+          "away": "Côte d'Ivoire",
+          "confirmed": true
+        },
+        {
+          "id": "phi-5",
+          "stage": "Group L",
+          "date": "2026-06-27",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "Croatia",
+          "away": "Ghana",
+          "confirmed": true
+        },
+        {
+          "id": "phi-6",
+          "stage": "Round of 16",
+          "date": "2026-07-04",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -473,7 +1354,11 @@
       "heatCopy": "New York in June and July can be hot and humid. Heat is a moderate factor, particularly for post-match outdoor waits.",
       "transitType": "rail-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-15", "2026-06-22", "2026-07-04"],
+      "matchDays": [
+        "2026-06-15",
+        "2026-06-22",
+        "2026-07-04"
+      ],
       "transportOptions": [
         {
           "mode": "NJ Transit train",
@@ -523,6 +1408,128 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "nyc-1",
+          "stage": "Group C",
+          "date": "2026-06-13",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Brazil",
+          "away": "Morocco",
+          "confirmed": true
+        },
+        {
+          "id": "nyc-2",
+          "stage": "Group I",
+          "date": "2026-06-16",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "France",
+          "away": "Senegal",
+          "confirmed": true
+        },
+        {
+          "id": "nyc-3",
+          "stage": "Group I",
+          "date": "2026-06-22",
+          "time": "20:00",
+          "timezone": "EDT",
+          "home": "Norway",
+          "away": "Senegal",
+          "confirmed": true
+        },
+        {
+          "id": "nyc-4",
+          "stage": "Group E",
+          "date": "2026-06-25",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "Ecuador",
+          "away": "Germany",
+          "confirmed": true
+        },
+        {
+          "id": "nyc-5",
+          "stage": "Group L",
+          "date": "2026-06-27",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "Panama",
+          "away": "England",
+          "confirmed": true
+        },
+        {
+          "id": "nyc-6",
+          "stage": "Round of 32",
+          "date": "2026-06-30",
+          "time": "17:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "nyc-7",
+          "stage": "Round of 16",
+          "date": "2026-07-05",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "nyc-8",
+          "stage": "Final",
+          "date": "2026-07-19",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -542,7 +1549,11 @@
       "heatCopy": "Kansas City in June and July averages 30–33°C. Heat is a moderate-to-high factor for outdoor queues.",
       "transitType": "shuttle-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-16", "2026-06-23", "2026-06-28"],
+      "matchDays": [
+        "2026-06-16",
+        "2026-06-23",
+        "2026-06-28"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -592,6 +1603,108 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "kc-1",
+          "stage": "Group J",
+          "date": "2026-06-16",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Argentina",
+          "away": "Algeria",
+          "confirmed": true
+        },
+        {
+          "id": "kc-2",
+          "stage": "Group E",
+          "date": "2026-06-20",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "Ecuador",
+          "away": "Curaçao",
+          "confirmed": true
+        },
+        {
+          "id": "kc-3",
+          "stage": "Group F",
+          "date": "2026-06-25",
+          "time": "19:00",
+          "timezone": "CDT",
+          "home": "Tunisia",
+          "away": "Netherlands",
+          "confirmed": true
+        },
+        {
+          "id": "kc-4",
+          "stage": "Group J",
+          "date": "2026-06-27",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Algeria",
+          "away": "Austria",
+          "confirmed": true
+        },
+        {
+          "id": "kc-5",
+          "stage": "Round of 32",
+          "date": "2026-07-03",
+          "time": "21:30",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "kc-6",
+          "stage": "Quarter-final",
+          "date": "2026-07-11",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -611,7 +1724,11 @@
       "heatCopy": "Atlanta in June and July averages 30–32°C with high humidity. Plan accordingly for outdoor queues.",
       "transitType": "rail-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-15", "2026-06-20", "2026-06-27"],
+      "matchDays": [
+        "2026-06-15",
+        "2026-06-20",
+        "2026-06-27"
+      ],
       "transportOptions": [
         {
           "mode": "MARTA rail",
@@ -661,6 +1778,128 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "atl-1",
+          "stage": "Group H",
+          "date": "2026-06-15",
+          "time": "12:00",
+          "timezone": "EDT",
+          "home": "Spain",
+          "away": "Cape Verde",
+          "confirmed": true
+        },
+        {
+          "id": "atl-2",
+          "stage": "Group A",
+          "date": "2026-06-18",
+          "time": "12:00",
+          "timezone": "EDT",
+          "home": "Czechia",
+          "away": "South Africa",
+          "confirmed": true
+        },
+        {
+          "id": "atl-3",
+          "stage": "Group H",
+          "date": "2026-06-21",
+          "time": "12:00",
+          "timezone": "EDT",
+          "home": "Spain",
+          "away": "Saudi Arabia",
+          "confirmed": true
+        },
+        {
+          "id": "atl-4",
+          "stage": "Group C",
+          "date": "2026-06-24",
+          "time": "18:00",
+          "timezone": "EDT",
+          "home": "Morocco",
+          "away": "Haiti",
+          "confirmed": true
+        },
+        {
+          "id": "atl-5",
+          "stage": "Group K",
+          "date": "2026-06-27",
+          "time": "19:30",
+          "timezone": "EDT",
+          "home": "Congo DR",
+          "away": "Uzbekistan",
+          "confirmed": true
+        },
+        {
+          "id": "atl-6",
+          "stage": "Round of 32",
+          "date": "2026-07-01",
+          "time": "12:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "atl-7",
+          "stage": "Round of 16",
+          "date": "2026-07-07",
+          "time": "12:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "atl-8",
+          "stage": "Semi-final",
+          "date": "2026-07-15",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -680,7 +1919,11 @@
       "heatCopy": "Houston in June and July averages 34–36°C with very high humidity. This is among the highest heat risk venues. Plan accordingly.",
       "transitType": "shuttle-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-11", "2026-06-17", "2026-06-24"],
+      "matchDays": [
+        "2026-06-11",
+        "2026-06-17",
+        "2026-06-24"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -730,6 +1973,118 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "hou-1",
+          "stage": "Group E",
+          "date": "2026-06-14",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "Germany",
+          "away": "Curaçao",
+          "confirmed": true
+        },
+        {
+          "id": "hou-2",
+          "stage": "Group K",
+          "date": "2026-06-17",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "Portugal",
+          "away": "Congo DR",
+          "confirmed": true
+        },
+        {
+          "id": "hou-3",
+          "stage": "Group F",
+          "date": "2026-06-20",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "Netherlands",
+          "away": "Sweden",
+          "confirmed": true
+        },
+        {
+          "id": "hou-4",
+          "stage": "Group K",
+          "date": "2026-06-23",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "Portugal",
+          "away": "Uzbekistan",
+          "confirmed": true
+        },
+        {
+          "id": "hou-5",
+          "stage": "Group H",
+          "date": "2026-06-26",
+          "time": "19:00",
+          "timezone": "CDT",
+          "home": "Cape Verde",
+          "away": "Saudi Arabia",
+          "confirmed": true
+        },
+        {
+          "id": "hou-6",
+          "stage": "Round of 32",
+          "date": "2026-06-29",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "hou-7",
+          "stage": "Round of 16",
+          "date": "2026-07-04",
+          "time": "12:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -749,7 +2104,11 @@
       "heatCopy": "Toronto in June and July averages 20–25°C. Heat is not a significant factor here.",
       "transitType": "rail-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-12", "2026-06-18", "2026-06-25"],
+      "matchDays": [
+        "2026-06-12",
+        "2026-06-18",
+        "2026-06-25"
+      ],
       "transportOptions": [
         {
           "mode": "TTC streetcar / transit",
@@ -805,6 +2164,108 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "tor-1",
+          "stage": "Group B",
+          "date": "2026-06-12",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "confirmed": true
+        },
+        {
+          "id": "tor-2",
+          "stage": "Group L",
+          "date": "2026-06-17",
+          "time": "19:00",
+          "timezone": "EDT",
+          "home": "Ghana",
+          "away": "Panama",
+          "confirmed": true
+        },
+        {
+          "id": "tor-3",
+          "stage": "Group E",
+          "date": "2026-06-20",
+          "time": "16:00",
+          "timezone": "EDT",
+          "home": "Germany",
+          "away": "Côte d'Ivoire",
+          "confirmed": true
+        },
+        {
+          "id": "tor-4",
+          "stage": "Group L",
+          "date": "2026-06-23",
+          "time": "19:00",
+          "timezone": "EDT",
+          "home": "Panama",
+          "away": "Croatia",
+          "confirmed": true
+        },
+        {
+          "id": "tor-5",
+          "stage": "Group I",
+          "date": "2026-06-26",
+          "time": "15:00",
+          "timezone": "EDT",
+          "home": "Senegal",
+          "away": "Iraq",
+          "confirmed": true
+        },
+        {
+          "id": "tor-6",
+          "stage": "Round of 32",
+          "date": "2026-07-02",
+          "time": "19:00",
+          "timezone": "EDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -824,7 +2285,11 @@
       "heatCopy": "Vancouver in June and July averages 18–22°C. Heat is not a significant factor here.",
       "transitType": "rail-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-13", "2026-06-20", "2026-06-26"],
+      "matchDays": [
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-26"
+      ],
       "transportOptions": [
         {
           "mode": "SkyTrain",
@@ -880,6 +2345,118 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "van-1",
+          "stage": "Group D",
+          "date": "2026-06-13",
+          "time": "00:00",
+          "timezone": "PDT",
+          "home": "Australia",
+          "away": "Türkiye",
+          "confirmed": true
+        },
+        {
+          "id": "van-2",
+          "stage": "Group B",
+          "date": "2026-06-18",
+          "time": "15:00",
+          "timezone": "PDT",
+          "home": "Canada",
+          "away": "Qatar",
+          "confirmed": true
+        },
+        {
+          "id": "van-3",
+          "stage": "Group G",
+          "date": "2026-06-21",
+          "time": "18:00",
+          "timezone": "PDT",
+          "home": "New Zealand",
+          "away": "Egypt",
+          "confirmed": true
+        },
+        {
+          "id": "van-4",
+          "stage": "Group B",
+          "date": "2026-06-24",
+          "time": "12:00",
+          "timezone": "PDT",
+          "home": "Switzerland",
+          "away": "Canada",
+          "confirmed": true
+        },
+        {
+          "id": "van-5",
+          "stage": "Group G",
+          "date": "2026-06-26",
+          "time": "20:00",
+          "timezone": "PDT",
+          "home": "New Zealand",
+          "away": "Belgium",
+          "confirmed": true
+        },
+        {
+          "id": "van-6",
+          "stage": "Round of 32",
+          "date": "2026-07-02",
+          "time": "20:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "van-7",
+          "stage": "Round of 16",
+          "date": "2026-07-07",
+          "time": "13:00",
+          "timezone": "PDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -899,7 +2476,11 @@
       "heatCopy": "Mexico City in June averages 18–23°C but the altitude means UV exposure is significantly higher than at sea level. Sun protection is important.",
       "transitType": "rail-first",
       "drivingRisk": "high",
-      "matchDays": ["2026-06-11", "2026-06-17", "2026-06-22"],
+      "matchDays": [
+        "2026-06-11",
+        "2026-06-17",
+        "2026-06-22"
+      ],
       "transportOptions": [
         {
           "mode": "Metro Line 2",
@@ -955,6 +2536,98 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "mex-1",
+          "stage": "Group A",
+          "date": "2026-06-11",
+          "time": "14:00",
+          "timezone": "CDT",
+          "home": "Mexico",
+          "away": "South Africa",
+          "confirmed": true
+        },
+        {
+          "id": "mex-2",
+          "stage": "Group K",
+          "date": "2026-06-17",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Uzbekistan",
+          "away": "Colombia",
+          "confirmed": true
+        },
+        {
+          "id": "mex-3",
+          "stage": "Group A",
+          "date": "2026-06-24",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "Czechia",
+          "away": "Mexico",
+          "confirmed": true
+        },
+        {
+          "id": "mex-4",
+          "stage": "Round of 32",
+          "date": "2026-06-30",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "mex-5",
+          "stage": "Round of 16",
+          "date": "2026-07-05",
+          "time": "19:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -974,7 +2647,11 @@
       "heatCopy": "Guadalajara in June averages 25–30°C with some humidity. Heat is a moderate factor for outdoor queues.",
       "transitType": "shuttle-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-14", "2026-06-19", "2026-06-24"],
+      "matchDays": [
+        "2026-06-14",
+        "2026-06-19",
+        "2026-06-24"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -1030,6 +2707,98 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "gdl-1",
+          "stage": "Group A",
+          "date": "2026-06-11",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "South Korea",
+          "away": "Czechia",
+          "confirmed": true
+        },
+        {
+          "id": "gdl-2",
+          "stage": "Group A",
+          "date": "2026-06-18",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "Mexico",
+          "away": "South Korea",
+          "confirmed": true
+        },
+        {
+          "id": "gdl-3",
+          "stage": "Group K",
+          "date": "2026-06-23",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Colombia",
+          "away": "Congo DR",
+          "confirmed": true
+        },
+        {
+          "id": "gdl-4",
+          "stage": "Group H",
+          "date": "2026-06-26",
+          "time": "19:00",
+          "timezone": "CDT",
+          "home": "Uruguay",
+          "away": "Spain",
+          "confirmed": true
+        },
+        {
+          "id": "gdl-5",
+          "stage": "Round of 32",
+          "date": "2026-07-01",
+          "time": "TBD",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     },
     {
@@ -1049,7 +2818,11 @@
       "heatCopy": "Monterrey in June averages 35–40°C with high humidity. This is among the most extreme heat conditions of any host city. Hydration, sun protection, and shaded waiting are essential.",
       "transitType": "shuttle-first",
       "drivingRisk": "medium",
-      "matchDays": ["2026-06-15", "2026-06-21", "2026-06-27"],
+      "matchDays": [
+        "2026-06-15",
+        "2026-06-21",
+        "2026-06-27"
+      ],
       "transportOptions": [
         {
           "mode": "Official shuttle",
@@ -1105,6 +2878,98 @@
         "officialCityLink": null,
         "lastUpdated": "2026-05-29",
         "alerts": []
+      },
+      "matches": [
+        {
+          "id": "mty-1",
+          "stage": "Group F",
+          "date": "2026-06-14",
+          "time": "21:00",
+          "timezone": "CDT",
+          "home": "Sweden",
+          "away": "Tunisia",
+          "confirmed": true
+        },
+        {
+          "id": "mty-2",
+          "stage": "Group F",
+          "date": "2026-06-21",
+          "time": "23:00",
+          "timezone": "CDT",
+          "home": "Tunisia",
+          "away": "Japan",
+          "confirmed": true
+        },
+        {
+          "id": "mty-3",
+          "stage": "Group A",
+          "date": "2026-06-24",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "South Africa",
+          "away": "South Korea",
+          "confirmed": true
+        },
+        {
+          "id": "mty-4",
+          "stage": "Round of 32",
+          "date": "2026-06-29",
+          "time": "20:00",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        },
+        {
+          "id": "mty-5",
+          "stage": "Round of 16",
+          "date": "TBD",
+          "time": "TBD",
+          "timezone": "CDT",
+          "home": "TBD",
+          "away": "TBD",
+          "confirmed": false
+        }
+      ],
+      "stadiumRules": {
+        "bagPolicy": "Clear bag required. Maximum size 12\" x 6\" x 12\". No backpacks.",
+        "prohibitedItems": [
+          "Outside food and beverages",
+          "Alcohol",
+          "Large umbrellas",
+          "Professional cameras",
+          "Laser pointers",
+          "Drones"
+        ],
+        "idRequired": "Valid government-issued photo ID required for all ticket holders.",
+        "cashless": true,
+        "alcoholPolicy": "Alcohol available for purchase inside stadium.",
+        "foodPolicy": "No outside food or beverages permitted."
+      },
+      "stadiumFood": {
+        "options": [
+          "Hot dogs and burgers",
+          "Local food vendors",
+          "Vegetarian options available",
+          "Snacks and confectionery"
+        ],
+        "paymentMethods": [
+          "Credit card",
+          "Debit card",
+          "Mobile payment"
+        ],
+        "notes": "Stadium is cashless. No cash accepted at any vendor."
+      },
+      "queueTimes": {
+        "recommendedArrival": "90 minutes before kickoff",
+        "gateOpenTime": "2 hours before kickoff",
+        "estimatedQueueWait": "30-45 minutes at peak entry times",
+        "source": "General stadium guidance. Verify closer to matchday."
+      },
+      "postMatchInfo": {
+        "estimatedExitTime": "45-60 minutes to clear stadium area",
+        "transportWaitEstimate": "30-45 minutes wait for transport post-match",
+        "drivingExitAdvice": "Expect significant delays. Plan at least 60 minutes to exit the stadium area."
       }
     }
   ]

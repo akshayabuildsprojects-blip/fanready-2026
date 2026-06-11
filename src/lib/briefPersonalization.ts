@@ -156,6 +156,7 @@ export function resolveBriefCities(
         transitType: "mixed",
         drivingRisk: "medium",
         matchDays: [],
+        matches: [],
         transportOptions: [],
         hotelZones: [],
         dynamicFields: {
@@ -167,6 +168,30 @@ export function resolveBriefCities(
           officialCityLink: null,
           lastUpdated: "",
           alerts: [],
+        },
+        stadiumRules: {
+          bagPolicy: "Check official stadium policy before matchday.",
+          prohibitedItems: [],
+          idRequired: "Check official stadium policy before matchday.",
+          cashless: true,
+          alcoholPolicy: "Check official stadium policy before matchday.",
+          foodPolicy: "Check official stadium policy before matchday.",
+        },
+        stadiumFood: {
+          options: [],
+          paymentMethods: [],
+          notes: "Check official stadium policy before matchday.",
+        },
+        queueTimes: {
+          recommendedArrival: "Verify closer to matchday.",
+          gateOpenTime: "Verify closer to matchday.",
+          estimatedQueueWait: "Verify closer to matchday.",
+          source: "General stadium guidance. Verify closer to matchday.",
+        },
+        postMatchInfo: {
+          estimatedExitTime: "Verify closer to matchday.",
+          transportWaitEstimate: "Verify closer to matchday.",
+          drivingExitAdvice: "Verify official post-match driving guidance.",
         },
       } satisfies City;
 

@@ -9,6 +9,17 @@ export interface TransportOption {
   action: string;
 }
 
+export interface Match {
+  id: string;
+  stage: string;
+  date: string;
+  time: string;
+  timezone: string;
+  home: string;
+  away: string;
+  confirmed: boolean;
+}
+
 export interface HotelZone {
   zone: string;
   pros: string;
@@ -25,6 +36,34 @@ export interface CityDynamicFields {
   officialCityLink: string | null;
   lastUpdated: string;
   alerts: unknown[];
+}
+
+export interface StadiumRules {
+  bagPolicy: string;
+  prohibitedItems: string[];
+  idRequired: string;
+  cashless: boolean;
+  alcoholPolicy: string;
+  foodPolicy: string;
+}
+
+export interface StadiumFood {
+  options: string[];
+  paymentMethods: string[];
+  notes: string;
+}
+
+export interface QueueTimes {
+  recommendedArrival: string;
+  gateOpenTime: string;
+  estimatedQueueWait: string;
+  source: string;
+}
+
+export interface PostMatchInfo {
+  estimatedExitTime: string;
+  transportWaitEstimate: string;
+  drivingExitAdvice: string;
 }
 
 export interface City {
@@ -44,9 +83,14 @@ export interface City {
   transitType: string;
   drivingRisk: string;
   matchDays: string[];
+  matches: Match[];
   transportOptions: TransportOption[];
   hotelZones: HotelZone[];
   dynamicFields: CityDynamicFields;
+  stadiumRules: StadiumRules;
+  stadiumFood: StadiumFood;
+  queueTimes: QueueTimes;
+  postMatchInfo: PostMatchInfo;
 }
 
 export interface GlobalAlert {

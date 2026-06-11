@@ -25,6 +25,7 @@ export interface CityLogistics {
 export interface TripAnswers {
   hostCities: string[];
   cityDetails: Record<string, CityLogistics>;
+  selectedMatches?: string[];
   visitingFromAbroad: boolean;
   crossingBorders: boolean;
   drivingVehicle: boolean;

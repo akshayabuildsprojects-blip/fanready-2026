@@ -9,7 +9,7 @@ import "./index.css";
 
 const CURRENT_APP_VERSION = "1.0.0";
 const APP_VERSION_KEY = "app_version";
-const RESET_STORAGE_KEYS = ["tripAnswers", "selectedCities"];
+const RESET_STORAGE_KEYS = ["tripAnswers", "selectedCities", "selectedMatches"];
 const UPDATE_BANNER_ID = "pwa-update-banner";
 
 function resetVersionedLocalStorage() {
